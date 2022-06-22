@@ -132,6 +132,7 @@
             font-weight: 700;
             font-size: 22px;
             margin-right: 20px;
+            cursor: pointer;
           
         }
         .login_title>ul>li:nth-child(1){
@@ -143,16 +144,28 @@
             height: 340px;
             padding: 20px 0px 0px;
         }
+        .username_box{
+            position: relative;
+        }
+        .username_box span{
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            /* top: 5px; */
+            font-weight: 500;
+            font-size: 18px;
+        }
         .username,.password{
             width: 320px;
             height: 20px;
             margin-bottom: 20px;
             padding: 30px 20px 10px;
             background-color: #F9F9F9;
-            border-radius: 10px;
-            border: #fff;
+            border-radius: 5px;
+            border:1px solid #fff;
             font-size: 20px;  
         }
+
          input::-webkit-input-placeholder { /* Chrome/Opera/Safari  */
             color: rgba(0,0,0,.4);
         }
@@ -199,6 +212,12 @@
         }
         .password_box{
             position: relative;
+        }
+        .password_box span{
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 18px;
         }
         .pwd_show,.pwd_hidden{
             position: absolute;
@@ -310,6 +329,11 @@
             font-weight: 500;
             line-height: 60px;
         }
+        .tip{
+            margin: -15px 0 10px 20px;
+            color: red; 
+            
+        }
         
     </style>
 </head>
@@ -339,21 +363,26 @@
                 <div class="login_box">
                     <div class="login_title">
                         <ul>
-                            <li>登陆</li>
-                            <li>注册</li>
+                            <li id="login">登陆</li>
+                            <li id="register">注册</li>
                         </ul>
                     </div>
                     <!-- 登陆 -->
-                    <div class="login_content">
+                    <div class="login_content" id="login_box">
                         <form action="">
-                            <div><input type="text" class="username" placeholder="邮箱/手机号码/小米ID"></div>
-                            <div class="password_box"><input type="password" class="password" placeholder="密码">
+                            <div class="username_box"><input id="user_input" type="text" class="username">
+                                <span id="email_tip">邮箱/手机号码/小米ID</span>
+                                <p class="tip" id="e_tip" style="display: none;">邮箱不合法</p>
+                            </div>
+                            <div class="password_box"><input id="pwd_input" type="password" class="password">
                                 <div class="pwd_show">
                                     <svg class="eye" t="1655778777465" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3841" width="200" height="200"><path d="M469.333333 681.386667c-36.053333-2.432-71.253333-8.533333-104.96-17.92l-69.802666 149.674666a42.368 42.368 0 0 1-56.533334 20.266667 42.666667 42.666667 0 0 1-20.821333-56.32l66.986667-143.658667a451.712 451.712 0 0 1-148.906667-112.682666 388.693333 388.693333 0 0 1-70.570667-119.338667 42.666667 42.666667 0 1 1 80.128-29.354667 303.445333 303.445333 0 0 0 55.210667 93.098667C270.634667 547.413333 383.018667 597.333333 505.728 597.333333c122.752 0 235.136-49.962667 305.706667-132.181333a303.445333 303.445333 0 0 0 55.210666-93.098667 42.666667 42.666667 0 0 1 80.128 29.354667 388.693333 388.693333 0 0 1-70.570666 119.338667 423.68 423.68 0 0 1-18.773334 20.48l104.362667 104.362666a42.666667 42.666667 0 0 1-0.298667 60.032 42.368 42.368 0 0 1-60.032 0.298667l-109.653333-109.653333c-20.48 14.08-42.24 26.581333-65.024 37.418666l66.901333 143.36a42.666667 42.666667 0 0 1-20.821333 56.362667 42.368 42.368 0 0 1-56.533333-20.266667l-69.717334-149.546666a520.533333 520.533333 0 0 1-91.946666 16.810666v130.645334A42.666667 42.666667 0 0 1 512 853.333333c-23.722667 0-42.666667-18.944-42.666667-42.24v-129.706666z" fill="#dbdbdb" p-id="3842"></path><path d="M176.128 524.373333a42.368 42.368 0 0 1 60.032 0.256 42.666667 42.666667 0 0 1 0.298667 60.074667l-121.216 121.216a42.368 42.368 0 0 1-60.074667-0.298667 42.666667 42.666667 0 0 1-0.298667-60.032l121.258667-121.258666z" fill="#dbdbdb" p-id="3843"></path></svg>
                                 </div>
                                 <div class="pwd_hidden" style="display: none;">
                                     <svg class="eye" t="1655778848421" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4414" width="200" height="200"><path d="M512 192c156.448 0 296.021333 98.730667 418.410667 291.605333a52.938667 52.938667 0 0 1 0 56.789334C808.021333 733.269333 668.448 832 512 832c-156.448 0-296.021333-98.730667-418.410667-291.605333a52.938667 52.938667 0 0 1 0-56.789334C215.978667 290.730667 355.552 192 512 192z m0 128c-106.037333 0-192 85.962667-192 192s85.962667 192 192 192 192-85.962667 192-192-85.962667-192-192-192z m0 320c70.688 0 128-57.312 128-128s-57.312-128-128-128-128 57.312-128 128 57.312 128 128 128z" p-id="4415" fill="#dbdbdb"></path></svg>
                                 </div>
+                                <span id="pwd_tip">密码</span>
+                                <p class="tip" id="p_tip" style="display: none;">密码不合法</p>
                             </div>
                             <div class="check_read">
                                 <input type="checkbox">
@@ -379,7 +408,7 @@
   
                     </div>
                     <!-- 注册 -->
-                    <div class="login_content"  style="display: none;">
+                    <div class="login_content" id="register_box"  style="display: none;">
                         <form action="">
                             <div class="selelct_box_pos">
                                 <select class="select_box">
@@ -428,5 +457,87 @@
 
         </div>
     </div>
+    <script>
+        //Tab栏切换
+        var login = document.getElementById('login')
+        var register = document.getElementById('register')
+        var login_box = document.getElementById('login_box')
+        var register_box = document.getElementById('register_box')
+        // console.log(login)
+        login.onclick = function(){
+            login.setAttribute('style','border-bottom:3px solid #ff5c00;')
+            login_box.style.display = 'block'
+            register.setAttribute('style','border-bottom:0px solid #ff5c00;')
+            register_box.style.display = 'none'
+        }
+        register.onclick = function(){
+            login_box.style.display = 'none'
+            login.setAttribute('style','border-bottom:0px solid #ff5c00;')
+            register_box.style.display = 'block'
+            register.setAttribute('style','border-bottom:3px solid #ff5c00;')
+        }
+
+        //用户名输入框聚焦事件
+        var user_input = document.querySelector('#user_input')
+        // var 
+        var email_tip = document.getElementById('email_tip')
+        var e_tip = document.getElementById('e_tip')  //邮箱合法提示
+        user_input.onfocus = function(){
+           user_input.setAttribute('style','background-color:#FCF2F3; border-color:#ff5c00;box-shadow: 0 0 0 2px rgb(255 92 0 / 20%);')
+           email_tip.setAttribute('style','top:5px;font-size:12px;color:#ff5c00;') 
+        }
+        email_tip.onclick = function(){
+            user_input.focus()
+        }
+        user_input.onblur = function(){
+            if (this.value.length == 0){
+                e_tip.style.display = 'block'
+                e_tip.innerText = '请输入账号'
+            }else{
+                if(/^[\w\-\.]{5,}\@[\w]+\.[\w]{2,4}$/.test(this.value)){
+                    user_input.setAttribute('style','background-color:#F9F9F9;')
+                    email_tip.setAttribute('style','top:5px;font-size:12px;color:#666666;')
+                    e_tip.style.display = 'none'
+                }else{
+                    e_tip.style.display = 'block'
+                    e_tip.innerText = '邮箱不合法'
+                }
+            }
+        }
+
+        //密码输入框聚焦事件
+        var pwd_input = document.querySelector('#pwd_input')
+        var pwd_tip = document.getElementById('pwd_tip')  
+        var p_tip = document.getElementById('p_tip') //密码错误信息提示
+        pwd_input.onfocus = function(){
+            pwd_input.setAttribute('style','background-color:#FCF2F3; border-color:#ff5c00;box-shadow: 0 0 0 2px rgb(255 92 0 / 20%);')
+            pwd_tip.setAttribute('style','top:5px;font-size:12px; color:#ff5c00;') 
+        }
+        pwd_tip.onclick = function(){
+            pwd_input.focus()
+        }
+        //离开输入框
+        pwd_input.onblur = function(){
+            if (this.value.length == 0){
+                p_tip.style.display = 'block'
+                p_tip.innerText = '请输入密码'
+            }else if(this.value.length<6 || this.value.length>18){
+                p_tip.style.display = 'block'
+                p_tip.innerText = '密码长度应该在6-18位'
+            }
+            else{
+                if(/^[a-zA-Z0-9_\-$]{6,18}$/.test(this.value)){
+                    pwd_input.setAttribute('style','background-color:#F9F9F9;')
+                    pwd_tip.setAttribute('style','top:5px;font-size:12px;color:#666666;')
+                    p_tip.style.display = 'none'
+                }else{
+                    p_tip.style.display = 'block'
+                    p_tip.innerText = '密码不合法，提示：不能包含特殊字符'
+                }
+            }
+        }
+
+        
+    </script>
 </body>
 </html>

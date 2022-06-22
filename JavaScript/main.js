@@ -71,6 +71,113 @@ if (true){
 }
 a = 20
 
-if (b == a){
-    console.log('var没有作用范围')
+// if (b == a){
+//     console.log('var没有作用范围')
+// }
+
+for(let i = 0; i < 5; i++){
+    a ++ 
+    console.log(a)
 }
+
+var allowed = (age >= 18) ? 'yes': 'no'  //三元操作符
+console.log(allowed)
+
+option = '3'
+switch(option){
+    case '1':
+        console.log(1);
+        break;
+    case '2':
+        console.log(2)
+        break;
+    default:
+        console.log('default')
+}
+
+//集合
+var obj = new Object();
+var obj2 = {};
+obj = {
+    name: 'zhangsan',
+    age: 20,
+    email: 'zhangsan@qq.com',
+    contact:{
+        phone: 123456,
+        area: '重庆市南岸区'
+    }
+}
+obj.contact.wechat = 'wx'
+console.log(obj)
+console.log(obj.name)
+console.log(obj.contact)
+
+//数组
+var arr = new Array()
+var b = []
+
+arr[0] = 'dog'
+arr[5] = 'tiger'  //中间是underfined
+console.log(arr)
+console.log(arr.length)
+
+b = ['a', 'b', 'c']
+console.log(b)
+
+for(let i =0; i<b.length;i++){
+    console.log(b[i])
+}
+
+for (let i in arr){  //普通遍历会输出underfined，这种不会
+    console.log(arr[i])
+}
+
+arr.forEach(function(value){
+    console.log(value)
+})
+
+b.push('aaa')  //末尾追加
+console.log(b)
+
+b.reverse()   //反转
+console.log(b)
+
+b.shift()  //删除第一个
+console.log(b)
+
+b.unshift('first')  //数组第一个位置添加
+console.log(b)
+
+a = 1
+function add(x){  //只是定义了一下，还没执行
+    a += x;
+}
+add(2)  //函数执行
+console.log(a)
+
+// function add(a, b, c){
+
+// }
+
+function add(){
+    let sum = 0
+    for (let i = 0, j = arguments.length; i < j ;i++){
+        sum += arguments[i]
+    }
+    return sum
+}
+
+let sum = add(1, 2, 3, 4, 5, 6, 7, 8)
+console.log(sum)
+
+
+//闭包（函数返回一个函数）
+function makeAdder(a){
+    return function(b){
+        return a + b
+    }
+}
+
+var x = makeAdder(4)
+sum = x(5)
+console.log(sum)
