@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">发送请求</button>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $('#btn').on('click',function(){  //参数可写可不写
+            // $.get('http://localhost:8080/abc',{username:'张三',password:'123456'},function(response){
+            //     console.log(response)
+            // })
+            // $.get('http://localhost:8080/test',function(response){
+            //     console.log(response)
+            // })
+            $.post('http://localhost:8080/abc',{username:'zhangsan',password:'abcdef'},function(){
+                console.log(response)
+            })
+        })
+    </script>
+</body>
+</html>

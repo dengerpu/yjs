@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li.list{
+            background-color: #ccc;
+        }
+        .title{
+            color: #eee;
+        }
+        .max{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello</h1>
+    <button>Click me</button>
+
+    <ul id="sp-list" class="abc">
+        <li class="list">first</li>
+        <li class="list">second</li>
+        <li class="list">third</li>
+    </ul>
+    <script>
+        var title = document.getElementsByTagName('h1')
+        console.log(title)
+        title[0].style.backgroundColor = "red"
+        console.log(title[0].classList)  //所有的类名
+        title[0].classList.add('title')  //添加类名
+        title[0].classList.remove('title')  //删除类名
+
+        
+        var button = document.querySelector('button')
+        button.addEventListener('click', function(){
+            title[0].classList.toggle('title')  //来回切换
+        })
+        title[0].innerHTML = "GoodBye"
+
+        console.log(document.querySelector('ul').attributes) //获取所有属性
+        console.log(document.querySelector('ul').getAttribute('class'))  //获取属性值
+        document.querySelector('li').attributes.class.value = "title"
+        document.querySelector('h1').setAttribute('class','max')
+    </script>
+</body>
+</html>

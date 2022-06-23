@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <button id="btn">发送请求</button>
+    <script>
+        // $.ajax({
+        //     type: 'get',
+        //     url: 'http://www.example.com',
+        //     data: {name: 'zhangsan', age: '20'},  //data: 'name=zhangsan&age=20'
+        //     contentType: 'application/x-www-form-urlencoded', //application/json
+        //     beforeSend: function(){
+        //         return false
+        //     },
+        //     success: function(response){},
+        //     error: function(xhr){}
+        // })
+        var params = {name:"username", password:"password"}
+        $('#btn').on('click',function(){
+            $.ajax({
+                //请求方式 
+                type: 'get',
+                //请求地址
+                url: 'http://localhost:8080/abc',
+                //向服务器端发送的请求参数
+                //name=zhangsan&age=100
+                // data:{
+                //     name: 'zhangsan',
+                //     age: 100
+                // },
+                // data: 'name=zhangsan&age=20',
+                data: JSON.stringify(params),
+                //指定参数的格式类型
+                // contentType: 'application/json',
+                //在请求之前调用
+                beforeSend: function(){
+                    // alert('请求即将发送')
+                    //请求不会被发送
+                    // return false
+                },
+                //请求成功以后函数被调用
+                success: function(response){
+                    //response为服务器端返回的数据
+                    //方法内部会自动将json字符串转换为json对象
+                    console.log(response)
+                },
+                //请求失败以后函数被调用
+                error: function(xhr){
+                    console.log(xhr)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

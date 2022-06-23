@@ -1,0 +1,337 @@
+body{
+    width: 100%;
+    height: 800px;
+}
+.box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+/*
+左侧区域开始
+*/
+.left_box{
+    width: 25%;
+    height: 100%;
+    background-color: color;
+    background:  url('../img/bg.jpg') no-repeat #ccc; 
+    background-size: 100%;
+}   
+/*
+左侧区域结束
+*/
+/*
+右侧区域开始
+*/
+.right_box{
+    width: 70%;
+    height: 100%;
+    background-color: #fff;
+}
+.right_title_box{
+    height: 80px;
+    padding: 20px;
+    width: 100%;
+    background-color: #fff;
+    /* display: flex; */
+}
+.right_title_box_left{
+    float: left;
+    display: flex;
+    margin: 20px 0;
+}
+.icron_bg{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: url(../logo.png) #FF6900 no-repeat;
+    background-position: 5px 7px;
+    background-size: 80%;
+}
+.right_title_box_left span{
+    display: block;
+    height: 40px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    line-height: 40px;
+    margin-left: 10px;  
+}
+
+.right_title_box_right{
+    float: right;
+    margin: 20px 0;
+}
+.right_title_box_right>ul{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+}
+.right_title_box_right>ul>li{
+    font-size: 14px;
+    color: #838383;
+    font-weight: 400;
+    line-height: 40px;
+    padding: 0 10px;
+}
+/*
+登录窗口
+*/
+.login{
+    width: 450px;
+    height: 520px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 40px 45px;
+    box-shadow:  0 20px 50px 0 hsl(0deg 0% 64% / 10%);
+    position: relative;
+    /* background-color: #ccc; */
+}
+.erweima{
+    position: absolute;
+    cursor: pointer;
+    right: 0px;
+    top: 0px;
+    transform: translateZ(0);
+    border:32px solid #FFAD7F;
+    border-bottom-color: rgba(0,0,0,0);
+    border-left-color: rgba(0,0,0,0);
+    background-size: cover;
+}
+.erweima:hover{
+    border: 32px solid #ff5c00;
+    border-bottom-color: rgba(0,0,0,0);
+    border-left-color: rgba(0,0,0,0);
+}
+.erweima>svg{
+    position: absolute;
+    top: -22px;
+    right: -22px;
+    width: 40px;
+    height: 40px;
+}
+.login_box{
+    width: 360px;
+    margin: 0 auto;
+}
+.login_title>ul{
+    display: flex;
+}
+.login_title>ul>li{
+    color: #333;
+    font-weight: 700;
+    font-size: 22px;
+    margin-right: 20px;
+    cursor: pointer;
+  
+}
+.login_title>ul>li:nth-child(1){
+    border-bottom: 3px solid #ff5c00;
+}
+.login_content{
+    margin: 0 auto;
+    width: 360px;
+    height: 340px;
+    padding: 20px 0px 0px;
+}
+.username_box{
+    position: relative;
+}
+.username_box span{
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    /* top: 5px; */
+    font-weight: 500;
+    font-size: 18px;
+}
+.username,.password{
+    width: 320px;
+    height: 20px;
+    margin-bottom: 20px;
+    padding: 30px 20px 10px;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    border:1px solid #fff;
+    font-size: 20px;  
+}
+
+ input::-webkit-input-placeholder { /* Chrome/Opera/Safari  */
+    color: rgba(0,0,0,.4);
+}
+input:-ms-input-placeholder {  /*IE 10+ */
+    color: rgba(0,0,0,.4);
+}
+input:-moz-placeholder { /* Firefox 18- */
+    color: rgba(0,0,0,.4);
+    opacity: 1;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+color: rgba(0,0,0,.4);
+opacity: 1;
+}
+
+/* input::-webkit-input-placeholder {  Chrome/Opera/Safari 
+    color: #F04645;
+}
+input:-ms-input-placeholder {  IE 10+ 
+    color: #F04645;
+}
+input:-moz-placeholder {  Firefox 18- 
+    color: #F04645;
+    opacity: 1;
+}
+input::-moz-placeholder {  Firefox 19+ 
+color: #F04645;
+opacity: 1;
+} */
+
+.check_read>input{
+    width: 20px;
+    height: 12px;
+}
+.check_read>span{
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgba(0,0,0,.4);
+}
+.check_read>span>i{
+    color: #333;
+}
+.password_box{
+    position: relative;
+}
+.password_box span{
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 18px;
+}
+.pwd_show,.pwd_hidden{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 60px;
+    height: 60px;
+}
+.eye{
+    padding-left:15px ;
+    padding-top: 15px;
+    width: 30px;
+    height: 30px;
+    color: rgba(0,0,0,.4);
+}
+.submit_box>button{
+    background-color: #ff5c00;
+    width: 100%;
+    height: 60px;
+    border: 0px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 20px;
+    opacity: .4;
+}
+.submit_box>input{
+    background-color: #ff5c00;
+    width: 100%;
+    height: 60px;
+    border: 0px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 20px;
+    opacity: .4;
+}
+.swap{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.swap>div{
+    color: #ff5c00;
+    font-size: 18px;
+}
+.other{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+.other_login{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.other_login>div>a>svg{
+    width: 46px;
+    height: 46px;
+}
+.selelct_box_pos{
+    position: relative;
+}
+.select_box{
+    width: 360px;
+    height: 60px;
+    margin-bottom: 20px;
+    padding: 30px 20px 10px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    border:0px;
+    font-size: 16px; 
+}
+.selelct_box_pos span{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #aaa;
+}
+.court_num_box{
+    width: 100px;
+    height: 60px;
+    background-color: #F9F9F9;
+    border: 0px;
+    border-radius: 10px 0 0 10px;
+    color: #aaa;
+    font-size: 20px;
+    text-align: center;
+}
+.phone_box{
+    background-color: #F9F9F9;
+}
+.phone{
+    width: 232px;
+    height: 60px;
+    padding-left: 20px;
+    background-color: #F9F9F9;
+    border: 0px;
+    border-radius: 0px 10px 10px 0;
+    font-size: 16px;
+}
+.code_box{
+    margin: 20px 0;
+    position: relative;
+}
+.code_box>input{
+    width: 340px;
+    height: 60px;
+    background-color: #F9F9F9;
+    border:0px;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+.code_box>span{
+    position: absolute;
+    color: #ff7e29;
+    font-size: 14px;
+    top: 0px;
+    right: 15px;
+    font-weight: 500;
+    line-height: 60px;
+}
+.tip{
+    margin: -15px 0 10px 20px;
+    color: red; 
+    
+}
