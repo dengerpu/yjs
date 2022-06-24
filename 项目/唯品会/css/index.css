@@ -1,0 +1,407 @@
+header {
+    height: 170px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%)
+}
+.header_top{
+    height: 30px;
+    background-color: #F5F5F5;
+}
+.shortcut {
+    height: 30px;
+    line-height: 30px;
+}
+.shortcut_nav_top{
+    height: 30px;
+    display: flex;
+}
+.shortcut_nav_top li{
+    padding: 0 20px 0 13px;
+}
+.gift {
+    color: #F10180;
+}
+.split:after {
+    content: '/';
+    color: #ccc;
+    font-size: 8px;
+}
+.more {
+    color: #ccc; 
+    font-size: 8px;
+    margin-left: 2px;
+    /* padding-top: 4px; */
+}
+
+/*中部搜索框*/
+.header_center{
+    height: 100px;
+    /* display: flex; */
+}
+.left_logo {
+    margin-left: -20px;
+}
+.left_logo img{
+    width: 160px;
+    height: 100px;
+}
+.search_box {
+    position: relative;
+    margin-top: 33px;
+    margin-left: 100px;
+    width: 380px;
+    height: 32px;
+    border: 2px solid #fa2a83;
+    border-radius: 2px;
+    background-color: #fff;
+}
+.search_box input {
+    width: 310px;
+    height: 28px;
+    border-style: none;
+    padding: 2px 12px;
+}
+.search_btn {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 53px;
+    height: 33px;
+    background-color: #fa2a83;
+    text-align: center;
+}
+.search_icon {
+    font-weight: 900;
+    font-size: 20px;
+    color: #fff;
+}
+.gift_car {
+    position: relative;
+    width: 50px;
+    height: 32px;
+    padding: 0 25px;
+    line-height: 32px;
+    margin-top: 33px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f6f7f9;
+    border-radius: 2px;
+}
+.gifi_icon_bg {
+    position: absolute;
+    top: 6px;
+    left: 7px;
+    display: block;
+    width: 12px;
+    height: 17px;
+    background-image: url('../img/spite.png');
+    background-position: 0 -208px;
+}
+.gift_num {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    display: block;
+    border-radius: 8px;
+    height: 16px;
+    width: 24px;
+    line-height: 16px;
+    color: #fff;
+    text-align: center;
+    background-color: #f00581;
+}
+/*头部的底部导航栏*/
+nav {
+    /* border-bottom:1px solid #ccc ; */
+    
+}
+.header_bottom {
+    height: 43px;
+}
+.nav_left {
+    width: 156px;
+    height: 43px;
+    background-color: #F10180;
+    text-align: center;
+    line-height: 43px;
+    margin-bottom: -2px;
+}
+.nav_left>a{
+    color: #fff;
+    font-size: 16px;
+}
+.nav_right {
+    margin-left: 30px;
+}
+.nav_right>ul li{
+    display: block;
+    height: 43px;
+    line-height: 43px;
+    padding: 0 15px;
+    float: left;
+}
+.nav_right>ul li:nth-child(1)>a {
+    cursor: default;
+    font-weight: 700;
+    color: #f10180;
+}
+.nav_right>ul li>a {
+    display: block;
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+}
+.nav_more {
+    width: 13px;
+    display: block;
+    margin-left: 3px;
+    color: #333!important;
+    font-size: 8px;
+}
+/*中部轮播图*/
+.center {
+    position: relative;
+    height: 500px;
+    margin-top: 1px;
+    background: url('../img/swiper_bg.jpg') no-repeat;
+    background-size: 100%;
+}
+.swiper {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    padding: 12px;
+    padding-bottom: 0;
+    background: #fff;
+    background: rgba(255,255,255,.86);
+    width: 1160px;
+    height: 400px;
+    margin: 0 auto;
+    margin-left: -580px;
+    box-shadow: 0 1px 3px rgb(167 167 167 / 40%);
+}
+/*商品区域*/
+.shop1_content {
+    display: flex;
+    justify-content: space-around;
+}
+.shops_box {
+    display: flex;
+    flex-wrap: wrap;
+}
+.shop {
+    position: relative;
+    margin: 10px 0;
+    width: 580px;
+    height: 340px;
+    /* overflow: hidden; */
+    /* border: 1px solid #ccc */
+}
+.shop img {
+    /* width: 100%; */
+    width: 585px;
+    height: 332px;
+}
+.shop_content {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top: 80px;
+    width: 95%;
+}
+.shop_content2 {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top: 100px;
+    width: 100%;
+}
+.shop_item img {
+    display: block;
+    width: 172px;
+    height: 172px;
+}
+.shop_num {
+    color: #585c64;
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+.price_box {
+    display: flex;
+    justify-content: center;
+}
+.top_gap {
+    margin-top: 20px!important;
+}
+.shop_num,
+.price_box {
+    font-size: 14px;
+    margin: 0 auto;
+}
+.price_box span,
+.price_box p
+{
+    display: block;
+}
+.price_box span {
+    width: 50px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 40px;
+    overflow: hidden;
+    background-color: rgb(240, 56, 103);
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    text-align: center;
+}
+.price_box p {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+.shop_item {
+    position: relative;
+}
+.shop_item .img_bg {
+    position: absolute;
+    width: 122px;
+    height: 50px;
+    bottom: 60px;
+    left: 25px;
+}
+.shop_item .img_tag {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    bottom: 64px;
+    left: 45px;
+}
+
+
+/*第三栏目商品*/
+.shop3_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.shop3_item {
+    width: 570px;
+    height: 370px;
+    /* padding: 0 5px; */
+}
+.shop3_item img {
+    width: 570px;
+    height: 273px;
+}
+.brand {
+    display: flex;
+    padding: 20px 0;
+}
+.brand span {
+    font-size: 26px;
+    color: #f03867;
+    font-weight: 700;
+}
+.brand p,
+.brand i {
+    padding-top: 4px;
+    cursor: pointer;
+    font-family: PingFangSC-Medium;
+    font-size: 20px;
+    color: #222;
+    font-weight: 700;
+}
+.end_more {
+    /* margin: 0 auto; */
+    background-color: #f10180;
+    color: #fff;
+    cursor: pointer;
+    width: 130px;
+    margin: 10px auto;
+    border-radius: 3px;
+    padding: 0 36px 0 36px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+}
+
+/*底部*/
+footer {
+    width: 100%;
+    height: 515px;
+    font: 12px / 22px tahoma, arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", 微软雅黑, 宋体, sans-serif;
+    display: block;
+    clear: both;
+    overflow: hidden;
+    padding-top: 0px;
+    border-top: 1px solid rgb(235, 235, 235);
+    background-color: rgb(252, 252, 252);
+    color: rgb(77, 77, 77);
+}
+.footer_top ul {
+    overflow: hidden;
+    display: flex;
+    margin-left: 180px;
+}
+.footer_top i{
+    display: block;
+    /* background-color: red; */
+    margin-top: 30px;
+    margin-right: 38px;
+    margin-left: 10px;
+    width: 72px;
+    height: 75px;
+    font-size: 0;
+    text-indent: -100%;
+}
+.footer_top li:nth-child(1)>i{
+    background: url('../img/footer.png') no-repeat 0 0;
+}
+.footer_top li:nth-child(2)>i{
+    background: url('../img/footer.png') no-repeat -123px 0;
+}
+.footer_top li:nth-child(3)>i{
+    background: url('../img/footer.png') no-repeat -245px 0;
+}
+.footer_top li:nth-child(4)>i{
+    background: url('../img/footer.png') no-repeat -369px 0;
+}
+.footer_top li:nth-child(5)>i{
+    background: url('../img/footer.png') no-repeat -492px 0;
+}
+.footer_top li:nth-child(6)>i{
+    background: url('../img/footer.png') no-repeat -617px 0;
+}
+.footer_top li:nth-child(7)>i{
+    background: url('../img/footer.png') no-repeat -738px 0;
+}
+.foot_center {
+    height: 150px;
+    overflow: hidden;
+    margin: 20px 0 10px 110px;
+    line-height: 20px;
+}
+.foot_center dl {
+    float: left;
+    width: 145px;
+    height: 146px;
+    padding-left: 16px;
+    border-right: 1px solid #e0e0e0;
+}
+.foot_center dl:nth-last-child(1) {
+    border-right: 0px;
+}
+.about {
+    background-color: #d7237e;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+}
+.footer_bttom {
+    text-align: center;
+    line-height: 22px;
+}
