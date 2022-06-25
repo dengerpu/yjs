@@ -1,94 +1,22 @@
-function main() {
-  var imagesCommon = ["./img/1.jpg", "./img/2.jpg", "./img/3.jpg"];
-
-  var root = document.getElementById("root");
-
-  function appendContainer(text) {
-    var container = document.createElement("div");
-    container.className = "container";
-
-    root.appendChild(container);
-
-    if (text) {
-      var introduce = document.createElement("div");
-      introduce.className = "introduce";
-      var textNode = document.createTextNode(text);
-      introduce.appendChild(textNode);
-      container.appendChild(introduce);
+window.onload = function() {
+    var nav_left = document.getElementById('nav_left')
+    var nav_item_box = document.getElementById('nav_item_box')
+    nav_left.onmouseover = function() {
+        nav_item_box.style.display = "block"
     }
-    return container;
-  }
-
-  var fns = [
-    function() {
-      var text = "";
-      var container = appendContainer(text);
-      var awesomeSlider = new AwesomeSlider(imagesCommon, container, {
-        manual: manual()
-      });
+    nav_left.onmouseout = function() {
+        nav_item_box.style.display = "none"
     }
-  ];
 
-  for (var i = 0; i < fns.length; i++) {
-    fns[i]();
-  }
-}
-
-function indicator() {
-  var text = "";
-  var wrap = null;
-  return {
-    style: function() {
-      text = this.options.initIndex + 1 + " / " + this.realLen;
-      wrap = document.createElement("div");
-      wrap.className = "custom-indicator-wrap";
-      var textNode = document.createTextNode(text);
-      wrap.appendChild(textNode);
-      this.eleCollections.listWrap.appendChild(wrap);
-    },
-
-    active: function() {
-      text = this.current + " / " + this.realLen;
-      wrap.innerText = text;
+    //监听浏览器滚动事件
+    window.onscroll = function(){
+        var top=document.documentElement.scrollTop || document.body.scrollTop;
+        var nav=document.getElementById('nav')
+        // console.log(nav)
+        if(top>=170){
+           nav.classList.add("navmove")
+        }else{
+            nav.classList.remove("navmove")
+        }
     }
-  };
 }
-
-function manual() {
-  var previous = document.createElement("div");
-  previous.className = "manual-btn manual-previous";
-
-  var next = document.createElement("div");
-  next.className = "manual-btn manual-next";
-
-  return {
-    previous: previous,
-    next: next
-  };
-}
-
-function imageDownloading() {
-  var ele = document.createElement("div");
-  ele.className = "image-downloading";
-  var text = document.createTextNode("loading...");
-  ele.appendChild(text);
-  return ele;
-}
-
-function imagePlaceholder() {
-  var ele = document.createElement("div");
-  ele.className = "image-placeholder";
-  var text = document.createTextNode("error");
-  ele.appendChild(text);
-  return ele;
-}
-
-function readyGo(func) {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", func);
-  } else {
-    func();
-  }
-}
-
-readyGo(main);

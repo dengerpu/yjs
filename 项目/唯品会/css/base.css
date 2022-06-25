@@ -28,7 +28,8 @@ a{
 	font-size: 12px;
 }
 a:hover {
-    color: #e33333;
+    color: #f10180;
+    text-decoration: none;
 }
 
 button,

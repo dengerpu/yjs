@@ -62,8 +62,8 @@ header {
 }
 .search_btn {
     position: absolute;
-    top: 0;
-    right: -1px;
+    top: -3px;
+    right: -2px;
     width: 53px;
     height: 33px;
     background-color: #fa2a83;
@@ -76,7 +76,7 @@ header {
 }
 .gift_car {
     position: relative;
-    width: 50px;
+    width: 100px;
     height: 32px;
     padding: 0 25px;
     line-height: 32px;
@@ -112,12 +112,22 @@ header {
 /*头部的底部导航栏*/
 nav {
     /* border-bottom:1px solid #ccc ; */
-    
+    background-color: #fff;
+}
+.navmove {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 43px;
+    z-index: 999;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%)
 }
 .header_bottom {
     height: 43px;
 }
 .nav_left {
+    position: relative;
     width: 156px;
     height: 43px;
     background-color: #F10180;
@@ -129,6 +139,35 @@ nav {
     color: #fff;
     font-size: 16px;
 }
+.nav_left_item_box {
+    position: absolute;
+    top: 41px;
+    left: 0px;
+    width: 156px;
+    height: 430px;
+    z-index: 999;
+    background-color: #F10180;
+}
+.nav_left_item_box>ul li {
+    height: 43px;
+    line-height: 43px;
+    padding: 0px 20px;
+}
+.nav_left_item_box>ul li>a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+/* .nav_left_item_box>ul li:hover {
+    background-color: #fff;
+    color: #F10180;
+} */
+.nav_left_item_box>ul li>a:hover {
+    background-color: #fff;
+    color: #F10180;
+}
+
 .nav_right {
     margin-left: 30px;
 }
@@ -138,6 +177,9 @@ nav {
     line-height: 43px;
     padding: 0 15px;
     float: left;
+}
+.nav_right>ul li>a:hover {
+    color: #f10180;
 }
 .nav_right>ul li:nth-child(1)>a {
     cursor: default;
@@ -160,7 +202,7 @@ nav {
 /*中部轮播图*/
 .center {
     position: relative;
-    height: 500px;
+    height: 450px;
     margin-top: 1px;
     background: url('../img/swiper_bg.jpg') no-repeat;
     background-size: 100%;
@@ -174,7 +216,7 @@ nav {
     background: #fff;
     background: rgba(255,255,255,.86);
     width: 1160px;
-    height: 400px;
+    height: 425px;
     margin: 0 auto;
     margin-left: -580px;
     box-shadow: 0 1px 3px rgb(167 167 167 / 40%);
@@ -224,7 +266,7 @@ nav {
     color: #585c64;
     display: block;
     text-align: center;
-    padding: 10px 0;
+    padding: 8px 0;
     margin-top: 20px;
 }
 .price_box {
@@ -318,7 +360,7 @@ nav {
     background-color: #f10180;
     color: #fff;
     cursor: pointer;
-    width: 130px;
+    width: 200px;
     margin: 10px auto;
     border-radius: 3px;
     padding: 0 36px 0 36px;
@@ -382,7 +424,7 @@ footer {
 .foot_center {
     height: 150px;
     overflow: hidden;
-    margin: 20px 0 10px 110px;
+    margin: 20px 0 10px 160px;
     line-height: 20px;
 }
 .foot_center dl {
@@ -404,4 +446,63 @@ footer {
 .footer_bttom {
     text-align: center;
     line-height: 22px;
+}
+/*侧边栏*/
+.aside {
+    width: 36px;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    right: 0;
+    background-color: #262626;
+}
+.account {
+    margin-top: 100px;
+    text-align: center;
+}
+.account:hover,
+.icon_box>div:hover,
+.bottom_icon_box>div:hover
+{
+    cursor: pointer;
+    background-color: #DF147F;
+}
+.account span,
+.gift_bag span,
+.icon_box span,
+.bottom_icon_box span
+{
+    width: 36px;
+    font-size: 26px;
+    color: #fff;
+}
+.account i,
+.gift_bag i
+{
+    color: #fff;
+    font-size: 14px;
+}
+.gift_bag {
+    background-color: #DF147F;
+    text-align: center;
+    padding: 10px 0;
+    height: 130px;
+}
+.gift_bag i{
+    writing-mode: tb-rl;
+}
+.num_box {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 5px auto;
+}
+.icon_box,
+.bottom_icon_box {
+    text-align: center;
+}
+.bottom_icon_box {
+    margin-top: 120px;
 }
