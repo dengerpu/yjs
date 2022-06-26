@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-pre>v-pre用于跳过这个元素和它子元素的编译过程，用于显示原本的Mustache语法。
+            {{content}}
+        </h2>
+        <h2>
+            {{content}}
+        </h2>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',  //用于挂载要管理的元素
+            data: {  //定义数据
+                content:'内容'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{content}}</h1>
+        <h1 v-cloak>{{content}}</h1>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        //vue解析之前，<div id="app">中有一个v-cloak属性
+        //vue解析结束之后，v-cloak属性被删除
+        setTimeout(function (){
+            const app = new Vue({
+            el: '#app',  //用于挂载要管理的元素
+            data: {  //定义数据
+                content:'内容'
+            }
+        })
+        },1000)  //延迟加载以后会看到{{content}}，渲染之后才会显示真正的内容
+    </script>
+</body>
+</html>

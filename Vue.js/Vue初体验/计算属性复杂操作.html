@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 >{{sumPrice}}</h2>
+        <h2>{{Allprice}}</h2>
+        <h2>{{prices}}</h2>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',  //用于挂载要管理的元素
+            data: {  //定义数据
+               books:[
+                {id:100, name:'aaa', price:100},
+                {id:101, name:'bbb', price:86},
+                {id:102, name:'ccc', price:130},
+               ]
+            },
+            computed: {
+                sumPrice: function(){
+                    sum = 0
+                    for(let i = 0; i < this.books.length; i++){
+                        sum += this.books[i].price
+                    }
+                    return sum
+                },
+
+                Allprice: function(){
+                    sum = 0
+                    for(let i in this.books){
+                        sum += this.books[i].price
+                    }
+                    return sum
+                },
+                prices: function(){
+                    sum = 0
+                    for(let item of this.books){
+                        sum += item.price
+                    }
+                    return sum
+                }
+            }
+        })
+    </script>
+</body>
+</html>

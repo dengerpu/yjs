@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <h2 :style="{key(属性名): value(属性值)}">{{content}}</h2> -->
+        <!-- 50px要加上单引号，否则会被当成变量去解析 -->
+        <h2 :style="{fontSize:'50px'}">{{content}}</h2>
+        <h2 :style="{fontSize: fontSize + 'px',backgroundColor:finalColor}">{{content}}</h2>
+        <h2 :style="getStyles()">{{content}}</h2>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',  //用于挂载要管理的元素
+            data: {  //定义数据
+                content:'内容',
+                fontSize: 50,
+                finalColor: 'red'
+            },
+            methods:{
+                getStyles:function(){
+                    return {fontSize: this.fontSize + 'px',backgroundColor: this.finalColor}
+                }
+            }
+        })
+    </script>
+</body>
+</html>
