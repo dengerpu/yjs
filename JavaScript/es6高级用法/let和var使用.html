@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <button>按钮6</button>
+    <script>
+        //变量作用域，变量在什么范围内是可用的
+        {
+            var name = 'zhangsan'
+            console.log(name)
+        }
+        console.log(name) //外部也可以访问到
+
+        //2.没有会计作用域引起的问题：if的块级
+        var func;
+        if (true) {
+            var name = 'why'
+            func = function(){
+                console.log(name)
+            }
+        }
+        func()
+        name = "abc"
+        func()
+
+        //3.没有块级作用域引起的问题： for的块级
+        // var btns = document.getElementsByTagName('button')
+        // //console.log(btns)
+        // for(var i = 0; i < btns.length; i++){
+        //     btns[i].addEventListener('click',function(){
+        //         console.log('第'+i+'个按钮被点击')
+        //     })
+        // }   //添加的点击事件全是最后一个按钮的点击事件
+
+        //使用let解决
+        var btns = document.getElementsByTagName('button')
+        //console.log(btns)
+        for(let i = 0; i < btns.length; i++){
+            btns[i].addEventListener('click',function(){
+                index = i + 1
+                console.log('第'+index+'个按钮被点击')
+            })
+        }   //添加的点击事件全是最后一个按钮的点击事件
+
+
+    </script>
+</body>
+</html>

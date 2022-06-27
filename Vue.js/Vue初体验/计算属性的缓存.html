@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{fullName}}</h1>
+        <h1>{{fullName}}</h1>
+        <h1>{{fullName}}</h1>
+        <h1>{{getfullName()}}</h1>
+        <h1>{{getfullName()}}</h1>
+        <h1>{{getfullName()}}</h1>
+        <h1>{{getfullName()}}</h1>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',  //用于挂载要管理的元素
+            data: {  //定义数据
+                firstName: 'zhang',
+                lastName: 'san'
+            },
+            methods:{
+                getfullName(){
+                    console.log('getfullName方法调用')
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+            computed:{
+                fullName:{
+                    get(){
+                        console.log('计算属性调用fullName的get')
+                        return this.firstName+ ' ' + this.lastName
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

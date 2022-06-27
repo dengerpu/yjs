@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{count}}</h2>
+        <!-- <button v-on:click="count++">+</button>
+        <button v-on:click="count--">-</button> -->
+        <!-- 1.事件调用的方法没有参数 -->
+        <!-- 2.在时间定义时，写方法时省略了小括号，但是方法本身是需要一个参数的，Vue会
+         默认将浏览器产生的event事件作为参数传入到方法 -->
+        <button @click="btnClick">点击事件</button>
+        <button @click="btnClick()">点击事件</button>
+
+        <!-- 3.方法定义时，我们需要event对象，同时又需要其他参数
+        调用方法，手动获取到浏览器的event对象
+        -->
+        <button @click="increment(2)">+</button>
+        <button @click="decrement(10, $event)">-</button>
+       
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const  app = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                increment(num){
+                    console.log(event)
+                    this.count += num
+                },
+                decrement(num, event){
+                    console.log(event)
+                    this.count -= num 
+                },
+                btnClick(){
+                    console.log(event)
+                    console.log('点击事件')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

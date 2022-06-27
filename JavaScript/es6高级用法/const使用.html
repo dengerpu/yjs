@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const name = 'abc'
+        // name = "123"
+
+        // const title;
+
+        // 注意点3:常量的含义是指向的对象不能修改,但是可以改变内部属性
+        const obj = {
+            name : 'why',
+            age : 18,
+            height: 1.88
+        }
+        console.log(obj)
+        // obj = {} 错误写法，不能被更改
+        obj.name = 'lisi'
+        obj.age = 22
+        obj.height = 1.99
+        console.log(obj)
+
+        
+    </script>
+</body>
+</html>

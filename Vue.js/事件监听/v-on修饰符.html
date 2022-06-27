@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fu{
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+        }
+        .fu div{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+         <!-- 1.stop修饰符的使用 -->
+        <div @click="fuDivClick"class="fu">
+            <!-- 点击子类事件时，会发生冒泡，触发父类事件 -->
+            <!-- <div @click="ziDivClick" ></div> -->
+            <!-- 停止冒泡 -->
+            <div @click.stop="ziDivClick" ></div>
+        </div>
+
+          <!-- 2. .prevent修饰符的使用 -->
+        <form action="baidu">
+            <input @click.prevent="formSubmit()" type="submit" value="提交">
+        </form>
+
+        <!-- 3.键盘某个键盘的键帽 -->
+        <input type="text" @keyup.enter="keyUp">
+
+        <!-- 4. .once只触发一次回调 -->
+        <button @click.once="btnClick">只会调用一次</button>
+    </div>
+   
+    <script src="js/vue.js"></script>
+    <script>
+        const  app = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                ziDivClick(){
+                    console.log('子类div被点击了')
+                },
+                fuDivClick(){
+                    console.log('父类div被点击了')
+                },
+                formSubmit(){
+                    console.log('表单提交')
+                },
+                keyUp(){
+                    console.log('提交')
+                },
+                btnClick(){
+                    console.log('只会调用一次')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

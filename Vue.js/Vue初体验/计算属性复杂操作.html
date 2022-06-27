@@ -11,6 +11,7 @@
         <h2 >{{sumPrice}}</h2>
         <h2>{{Allprice}}</h2>
         <h2>{{prices}}</h2>
+        <h2>{{totalPrice}}</h2>
     </div>
     <script src="js/vue.js"></script>
     <script>
@@ -45,6 +46,12 @@
                         sum += item.price
                     }
                     return sum
+                },
+                totalPrice(){
+                    //使用高级函数
+                    return this.books.reduce((total, n)=>{
+                        return total + n.price
+                    }, 0)
                 }
             }
         })
