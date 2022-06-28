@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cnp2></cnp2>
+    </div>
+    <!-- 子组件 -->
+    <template id="cnp1">
+        <div>
+            <h2>我是子组件</h2>
+            <ul>
+                <li v-for="item in cmovies">{{item}}</li>
+              </ul>
+              <h2>{{cmessage}}</h2>
+        </div>
+    </template>
+
+    <template id="cnp2">
+        <div>
+            <h2>我是父组件</h2>
+            <p>我是内容, 哈哈哈哈</p>
+            <cnp1 :cmessage="message" :cmovies="movies"></cnp1>
+        </div>
+    </template>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //子组件
+        const cnp1 = Vue.extend({
+            template: '#cnp1',
+           // props:['cmovies', 'cmessage']
+           props: {
+            // 1.类型限制
+            // cmovies: Array,
+            // cmessage: String,
+
+            // 2.提供一些默认值, 以及必传值
+            cmessage: {
+                type: String,
+                default: 'aaaaaaaa',
+                required: true
+            },
+            // 类型是对象或者数组时, 默认值必须是一个函数
+            cmovies: {
+                type: Array,
+                default() {
+                return []
+                }
+            }
+            },
+        })
+        //父组件
+        Vue.component('cnp2',{
+            template: '#cnp2',
+            components:{
+                cnp1
+            },
+            data(){
+                return {
+                    message: '你好啊',
+                    movies: ['海王', '海贼王', '海尔兄弟']
+                }
+            }
+            
+        })
+        const app = new Vue({
+            el: '#app',
+            data:{
+                message:'你好啊'
+            },
+        })
+    </script>
+</body>
+</html>

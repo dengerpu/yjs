@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cnp1></cnp1>
+    </div>
+    <template id="cnp1">
+        <div>
+            <h2>我是标题1{{message}}</h2>
+            <p>我是内容, 哈哈哈哈</p>
+        </div>
+    </template>
+    <script src="js/vue.js"></script>
+    <script>
+        //注册全局组件
+        Vue.component('cnp1',{
+            template: '#cnp1',
+            data(){
+                return {
+                    message:'组件自己的内容'
+                }
+            }
+        })
+        const app = new Vue({
+            el: '#app',
+            data:{
+                message:'你好啊'
+            },
+        })
+    </script>
+</body>
+</html>

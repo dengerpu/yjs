@@ -20,7 +20,7 @@
 
  Ajax相当于浏览器发送请求与接收响应的代理人，以实现在不影响用户浏览页面的情况下，局部更新页面数据，从而提高用户体验。
 
-![image-20220623161636497](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220623161636497.png)
+![image-20220623161636497](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220623161636497.png)
 
 ## 实现步骤
 
@@ -84,7 +84,7 @@ JSON.parse(xhr.responseText)  //将JSON字符串转换为JSON对象
 
 ### GET请求
 
-![image-20220623164959098](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220623164959098.png)
+![image-20220623164959098](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220623164959098.png)
 
 需要自己手动拼接
 
@@ -114,7 +114,7 @@ JSON.parse(xhr.responseText)  //将JSON字符串转换为JSON对象
 
 ### POST请求
 
-![image-20220623170657884](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220623170657884.png)
+![image-20220623170657884](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220623170657884.png)
 
 ```javascript
 <script type="text/javascript">
@@ -211,7 +211,7 @@ var xhr = new XMLHttpRequest()
 
 
 
-![image-20220623193033177](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220623193033177.png)
+![image-20220623193033177](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220623193033177.png)
 
 ## Ajax错误处理
 
@@ -261,7 +261,7 @@ btn.onclick = function () {
 
 ## 低版本IE浏览器的缓存问题
 
-![image-20220623201353416](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220623201353416.png)
+![image-20220623201353416](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220623201353416.png)
 
 解决方案：在请求地址后面加请求参数，保证每一次请求中的请求参数的值不同
 

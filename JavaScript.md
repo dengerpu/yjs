@@ -20,7 +20,7 @@ DOM是什么：
 
 文档对象模型（Document Objext Model,简称DOM），是W3C组织推荐的处理可扩展标记语言（HTML或者XML）的标准编程接口
 
-![image-20220625150247258](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625150247258.png)
+![image-20220625150247258](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625150247258.png)
 
 ### 获取页面元素
 
@@ -91,7 +91,7 @@ btn.onclick = function (){
 
 #### 常见鼠标事件
 
-![image-20220625153340117](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625153340117.png)
+![image-20220625153340117](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625153340117.png)
 
 ### 操作属性
 
@@ -108,7 +108,7 @@ element.innerHTML = 'html代码'
 
 案例：显示系统时间
 
-![image-20220625154023234](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625154023234.png)
+![image-20220625154023234](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625154023234.png)
 
 ```javascript
 //元素可以不用添加事件
@@ -120,7 +120,7 @@ p.innerText = getDate()
 
 innerText不识别html标签，去除空格和换行
 
-![image-20220625154542451](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625154542451.png)
+![image-20220625154542451](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625154542451.png)
 
 修改元素属性 src title
 
@@ -131,7 +131,7 @@ element.title = '新图片标题'
 
 案例：分时显示不同图片，显示不同问候语
 
-![image-20220625155040325](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625155040325.png)
+![image-20220625155040325](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625155040325.png)
 
 表单元素的属性操作
 
@@ -145,9 +145,9 @@ btn.disabled = true  //禁用按钮
 
 案例：伪京东显示密码明文案例
 
-![image-20220625155603253](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625155603253.png)
+![image-20220625155603253](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625155603253.png)
 
-![image-20220625160358018](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625160358018.png)
+![image-20220625160358018](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625160358018.png)
 
 样式属性操作：
 
@@ -160,17 +160,17 @@ div.style.backgroundColor = 'purple'  //驼峰命名法
 
 案例：仿淘宝关闭案例
 
-![image-20220625161125066](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625161125066.png)
+![image-20220625161125066](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625161125066.png)
 
 案例：循环精灵图背景
 
-![image-20220625161320727](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625161320727.png)
+![image-20220625161320727](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625161320727.png)
 
 ![image-20220625161607316](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625161607316.png)
 
 案例：显示隐藏文本框内容
 
-![image-20220625162408790](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220625162408790.png)
+![image-20220625162408790](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220625162408790.png)
 
 使用className修改样式属性
 
@@ -188,7 +188,7 @@ div.style.backgroundColor = 'purple'  //驼峰命名法
 
 ## let/var
 
-![image-20220627165831454](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220627165831454.png)
+![image-20220627165831454](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220627165831454.png)
 
 ```html
  <button>按钮1</button>
@@ -283,7 +283,7 @@ const关键字
 
 ## 对象增强写法
 
-![image-20220627172839600](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220627172839600.png)
+![image-20220627172839600](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220627172839600.png)
 
 ```javascript
        let name = 'why';
@@ -301,5 +301,69 @@ const关键字
             }
         }
        obj1.func()
+```
+
+## 高阶函数
+
+### filter函数
+
+filter中的回调函数有一个要求: 必须返回一个boolean值
+
+* true: 当返回true时, 函数内部会自动将这次回调的n加入到新的数组中
+
+* false: 当返回false时, 函数内部会过滤掉这次的n
+
+```javascript
+ const nums = [10, 20, 111, 222, 444, 40, 50]
+        // 1.filter函数的使用
+        // // 10, 20, 40, 50
+        let newNums = nums.filter(function(n){
+            return n < 100
+        })
+        console.log(newNums)
+```
+
+### map函数
+
+```javascript
+        // // 2.map函数的使用
+        // // 20, 40, 80, 100
+        let new2Nums = newNums.map(function(n){
+            return n*2
+        })
+        console.log(new2Nums)
+```
+
+### reduce函数
+
+```javascript
+ // // 3.reduce函数的使用
+        // // reduce作用对数组中所有的内容进行汇总
+        let total = new2Nums.reduce(function(preValue, n){
+            return preValue + n
+        }, 0)
+        console.log(total)
+        
+        // 第一次: preValue 0 n 20
+        // 第二次: preValue 20 n 40
+        // 第二次: preValue 60 n 80
+        // 第二次: preValue 140 n 100
+        // 240
+```
+
+```javascript
+let total1 = nums
+        .filter(n => n < 100)
+        .map(n => n*2)
+        .reduce((preValue, n) => preValue + n)
+        console.log(total1)
+ let total2 = nums.filter(function (n) {
+        return n < 100
+        }).map(function (n) {
+        return n * 2
+        }).reduce(function (prevValue, n) {
+        return prevValue + n
+        }, 0)
+        console.log(total2);
 ```
 

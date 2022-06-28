@@ -30,9 +30,9 @@
 
 JavaScript不区分整数和浮点数类型（都是浮点数）
 
-![image-20220621201535723](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220621201535723.png)
+![image-20220621201535723](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220621201535723.png)
 
-![image-20220621204511883](C:\Users\Administrator.SC-201902031211\AppData\Roaming\Typora\typora-user-images\image-20220621204511883.png)
+![image-20220621204511883](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220621204511883.png)
 
 ```javascript
 

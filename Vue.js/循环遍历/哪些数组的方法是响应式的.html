@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for = "item in list">{{item}}</li>
+        </ul>
+        <button @click="btnClick">点击</button>
+ 
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',  //用于挂载要管理的元素
+            data: {  //定义数据
+                list: ['aaa', 'bbb', 'ccc', 'ddd']
+            },
+            methods: {
+                btnClick(){
+                    //1.push方法,数组末尾添加元素
+                    // this.list.push('eee')
+                    // this.list.push('eee', 'fff', 'ggg')
+
+                    //2.pop()删除数组中的最后一个元素
+                    // this.list.pop()
+
+                    //3.shift()删除数组中的第一个元素
+                    // this.list.shift()
+
+                    //4..unshift()在数组最前面添加元素
+                    // this.list.unshift('000')
+                    // this.list.unshift('000','111','222')
+                    
+                    //5.splice()作用：删除元素/插入元素/替换元素
+                    //删除元素：第一个参数：从这个索引后面开始删除
+                    //         第二个参数：传入要删除几个元素（如果没有传，就删除后面所有元素）
+                    //替换元素：第二个参数：标识我们要替换几个元素，后面就是用于替换前面的元素
+                    //插入元素：第二个参数：传入0，并且后面跟上要插入的元素
+                    // const start = 1
+                    // this.list.splice(start)  //删除start后面所有的元素
+                    // this.list.splice(start,2)  //删除start后的两个元素
+                    
+                    // this.list.splice(start, 2 ,'ffff')  //只传一个就只会替换一个
+                    // this.list.splice(start, 2 ,'fff', 'fff', 'fff')  //会替换两个，再插入一个
+                    
+                    // this.list.splice(start,0, 'x','y')  //插入
+
+                    // this.list.sort()
+
+                    // this.list.reverse()
+
+                   // this.list[0] = '1111111'  //通过这个修改方式修改无效
+                //    this.list.splice(0, 1 ,'1111')
+                    Vue.set(this.list, 0, '1111')  //修改索引为0的值
+                }
+            }
+        })
+    </script>
+</body>
+</html>

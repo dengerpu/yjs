@@ -4,11 +4,11 @@ HyperText Markup Lanuage(超文本标记语言)
 
 不是编程语言
 
-![img](file:///E:\qq\1649743146\Image\C2C\3A83E05798AF1A4ABCC84094B8E56579.png)
+![img](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/3A83E05798AF1A4ABCC84094B8E56579.png)
 
 
 
-![img](file:///E:\qq\1649743146\Image\C2C\9D107305349EA93A970017A68AC22B9C.png)
+![img](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/9D107305349EA93A970017A68AC22B9C.png)
 
 #### 快捷键
 
@@ -159,7 +159,7 @@ css保存在.css文件选中
 
 在HTML元素的style属性中添加
 
-![img](file:///E:\qq\1649743146\Image\C2C\F254D7369DEAC73D6A60C4B41C071272.png)
+![img](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/F254D7369DEAC73D6A60C4B41C071272.png)
 
 
 

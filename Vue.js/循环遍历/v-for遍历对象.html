@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 1.在遍历对象的过程中，如果只是获取一个值，name获取的是value -->
+            <li v-for = "value in obj">{{value}}</li>
+        </ul>
+        <ul>
+            <!-- 2.获取key,value 格式：(value,key) -->
+            <li v-for = "(value, key) in obj">{{key}}-{{value}}</li>
+        </ul>
+        <ul>
+            <!-- 3.获取key,value,index 格式：(value, key, index) -->
+            <li v-for = "(value, key, index) in obj">{{key}}-{{value}}--{{index}}</li>
+        </ul>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',  //用于挂载要管理的元素
+            data: {  //定义数据
+                obj:{
+                    name:'lisi',
+                    age: 18,
+                    height: 188
+                }
+            }
+        })
+    </script>
+</body>
+</html>
