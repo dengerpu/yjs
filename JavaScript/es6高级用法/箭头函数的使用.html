@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //箭头函数：也是一种定义函数的方式
+        //1. 定义函数的方式： function
+        const aaa = function (){
+            console.log('aaa')
+        }
+        //2.对象字面量中定义函数
+        const obj = {
+            bbb() {
+                console.log('bbbb')
+            }
+        }
+        //3.Es6中的箭头函数
+        const ccc = () => {
+            console.log('ccc')
+        }
+        aaa()
+        obj.bbb()
+        ccc()
+
+        // 1.参数问题
+        // 1.1放入两个参数
+        const sum = (num1, num2) => {
+            return num1*num2
+        }
+        // 1.2 放入一个参数
+        const power = num => {
+            return num*num
+        }
+
+        // 2.函数中
+        // 2.1函数代码块中有多行代码时
+        const test = () => {
+            console.log('hello word')
+            console.log('hello vue')
+        }
+        // 2.2只有一行代码
+        const add = (num1, num2) => num1+num2
+        const demo = () => console.log('demo')
+
+        console.log(sum(10, 20))
+        console.log(power(10, 20))
+        test()
+        console.log(add(10, 20))
+        demo()
+    </script>
+</body>
+</html>
