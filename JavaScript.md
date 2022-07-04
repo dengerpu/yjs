@@ -463,3 +463,64 @@ setTimeout(function () {
         obj2.aaa()
 ```
 
+## Promise
+
+Promise是异步编程的一种解决方案
+
+![image-20220703190239070](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220703190239070.png)
+
+* new Promise很明显是创建一个Promise对象
+  * 小括号中((resolve, reject) => {})也很明显就是一个函数，而且我们这里用的是之前刚刚学习过的箭头函数。
+  * 但是resolve, reject它们是什么呢？
+  * 我们先知道一个事实：在创建Promise时，传入的这个箭头函数是固定的（一般我们都会这样写）
+* resolve和reject它们两个也是函数，通常情况下，我们会根据请求数据的成功和失败来决定调用哪一个。
+  成功还是失败？
+  * 如果是成功的，那么通常我们会调用resolve(messsage)，这个时候，我们后续的then会被回调。
+  * 如果是失败的，那么通常我们会调用reject(error)，这个时候，我们后续的catch会被回调。 
+
+```javascript
+  new Promise((resolve, reject) => {
+           //resolve('hello, resolve')  // 调用这个函数之后，会在then处执行
+           //reject('hello reject')  // 调用这个函数，会执行catch函数
+            setTimeout(()=>{
+                // resolve('成功')
+            },1000)
+        }).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+```
+
+### Promise的三种状态
+
+* 首先, 当我们开发中有异步操作时, 就可以给异步操作包装一个Promise
+  * 异步操作之后会有三种状态
+    * pending：等待状态，比如正在进行网络请求，或者定时器没有到时间。
+    * fulfill：满足状态，当我们主动回调了resolve时，就处于该状态，并且会回调.then()
+    * reject：拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调.catch()
+
+![image-20220703213507231](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220703213507231.png)
+
+### Promise链式调用
+
+![image-20220703213651893](https://trpora-1300527744.cos.ap-chongqing.myqcloud.com/img/image-20220703213651893.png)
+
+```javascript
+  new Promise((resolve, reject) => {
+            resolve('hello world')
+        }).then(data => {
+            console.log(data)
+            return  new Promise((resolve, reject) =>{
+                resolve(data + '111')
+            })
+        }).then(data => {
+            console.log(data)
+            return new Promise((resolve, reject) => {
+                resolve(data + '2222')
+            })
+        }).then(data => {
+            console.log(data)
+        })
+```
+
