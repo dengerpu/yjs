@@ -1,0 +1,13 @@
+/*全局样式表*/
+html,
+body,
+#app
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+/*修改el-card的默认样式*/
+.el-card__body {
+    padding: 0px!important;
+}
