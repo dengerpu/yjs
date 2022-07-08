@@ -3,11 +3,16 @@ import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 
+const Users = () => import('../views/user/Users.vue')
+const Rights = () => import('../views/power/Rights.vue')
+const Roles = () => import('../views/power/Roles.vue')
+const Categories = () => import('../views/goods/Categories.vue')
+
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '',
+    path:'',
     redirect: '/login'
   },
   {
@@ -16,7 +21,14 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    children:[
+      {path: '/users', component: Users},
+      {path: '/rights', component: Rights},
+      {path: '/roles', component: Roles},
+      {path: '/categories', component: Categories}
+      
+    ]
   }
 ]
 

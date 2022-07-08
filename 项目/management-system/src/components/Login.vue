@@ -72,7 +72,7 @@ export default {
           },
         ],
         password: [
-          { required: true, message: '请输入密码', trigger: 'change' },
+          { required: true, message: '请输入密码', trigger: 'blur' },
           {
             min: 6,
             max: 18,
@@ -93,16 +93,15 @@ export default {
     login() {
       this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) {
-          return
+          return this.$message.error('输入的信息不合法')
         } else {
           const { data: res } = await this.$http.post('/login', this.loginForm)
-
-          if (res.status == 200) {
-            this.$message.success('登陆成功')
+          if (res.meta.status == 200) {
+            this.$message.success(res.meta.msg)
             window.sessionStorage.setItem('token', res.data.token)
             this.$router.push('/home')
-          } else {
-            this.$message.error('登录失败')
+          }else {
+            this.$message.error(res.meta.msg)
           }
         }
       })

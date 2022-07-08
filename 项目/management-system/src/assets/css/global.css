@@ -6,8 +6,19 @@ body,
     height: 100%;
     margin: 0;
     padding: 0;
+    min-width: 1366px;
+
 }
 /*修改el-card的默认样式*/
 .el-card__body {
     padding: 0px!important;
+}
+.el-table {
+    margin-top: 15px;
+}
+.el-pagination {
+    margin-top: 15px;
+}
+.el-breadcrumb {
+    padding: 22px 0;
 }
