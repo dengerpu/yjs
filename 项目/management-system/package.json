@@ -7,9 +7,13 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@packy-tang/vue-tinymce": "^1.1.2",
     "axios": "^0.27.2",
     "core-js": "^3.6.4",
+    "echarts": "^5.3.3",
     "element-ui": "^2.4.5",
+    "nprogress": "^0.2.0",
+    "tinymce": "^6.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vue-table-with-tree-grid": "^0.2.4"
@@ -19,6 +23,7 @@
     "@vue/cli-plugin-router": "~4.2.3",
     "@vue/cli-service": "~4.2.3",
     "babel-plugin-component": "^1.1.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "json5": "^2.2.1",
     "mockjs": "^1.1.0",
     "qs": "^6.11.0",
