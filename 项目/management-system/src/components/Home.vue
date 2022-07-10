@@ -14,7 +14,7 @@
         router
         :default-active="activePath"
       >
-        <el-menu-item index="/home"  @click="saveNavPath('/home', '首页')">
+        <el-menu-item index="/home" @click="saveNavPath('/home', '首页')">
           <i class="el-icon-s-home"></i>
           <span slot="title">首页</span>
         </el-menu-item>
@@ -53,12 +53,10 @@
                   :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
                 ></span>
               </div>
-              <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/home' }"
-                  >首页</el-breadcrumb-item
-                >
+              <!-- <el-breadcrumb separator="/">
+                <el-breadcrumb-item>首页</el-breadcrumb-item>
                 <el-breadcrumb-item>用户</el-breadcrumb-item>
-              </el-breadcrumb>
+              </el-breadcrumb> -->
             </div>
           </el-col>
           <el-col :xs="0" :sm="12" :md="12" :lg="12" :xl="12">
@@ -298,6 +296,7 @@ export default {
         color: #495060;
         font-size: 12px;
         font-weight: 500;
+        cursor: pointer;
       }
       .route_tag_active {
         background-color: #42b983;

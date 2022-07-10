@@ -100,7 +100,7 @@ export default {
             this.$message.success(res.meta.msg)
             window.sessionStorage.setItem('token', res.data.token)
             this.$router.push('/home')
-          }else {
+          } else {
             this.$message.error(res.meta.msg)
           }
         }
