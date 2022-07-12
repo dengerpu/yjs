@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/echarts.min.js"></script>
+    <style>
+        .box {
+            width: 300px;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var myChart = echarts.init(document.querySelector('.box'))
+        var myColor = ['#eb2100', '#eb3600', '#d0570e', '#d0a00e', '#34da62', '#00e9db', '#00c0e9', '#0096f3', '#33CCFF', '#33FFCC'];
+        option = {
+            backgroundColor: '#0A1246',
+            title: [{
+                show: true,
+                text: '人口排行',
+                subtext: '单位：万',
+                subtextStyle: {
+                    color: '#ffffff',
+                    lineHeight: 0
+                },
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 18,
+                },
+                left: 50,
+                top: 20
+            }],
+            grid: {
+                left: '-10%',
+                top: '12%',
+                right: '25%',
+                bottom: '8%',
+                containLabel: true
+            },
+            xAxis: [{
+                show: false,  // 不显示x轴
+            }],
+            yAxis: [
+                {
+                    type: 'category',
+                    inverse: true,
+                    nameGap: 20,
+                    offset: '0',  // 设置y轴与柱状图的距离
+                    axisLine: {  // y轴的线
+                        show: false,
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisTick: { // y轴刻度
+                        show: false,
+                        lineStyle: {
+                            color: '#ddd'
+                        }
+                    },
+                    axisLabel: {  // y轴刻度标签
+                        interval: 0,
+                        margin: 80,  
+                        textStyle: {  
+                            color: '#fff',
+                            align: 'left',
+                            fontSize: 14
+                        },
+                        rich: {
+                            a: {
+                                color: '#fff',
+                                backgroundColor: '#f0515e',
+                                width: 20,
+                                height: 20,
+                                align: 'center',
+                                borderRadius: 2
+                            },
+                            b: {
+                                color: '#fff',
+                                backgroundColor: '#24a5cd',
+                                width: 20,
+                                height: 20,
+                                align: 'center',
+                                borderRadius: 2
+                            }
+                        },
+                        formatter: function (params) {
+                            if (parseInt(params.slice(0, 2)) < 3) {
+                                return [
+                                    '{a|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+                                ].join('\n')
+                            } else {
+                                return [
+                                    '{b|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+                                ].join('\n')
+                            }
+                        },
+
+                    },
+                    data: ['00南坪', '01工贸', '02石桥铺', '03沙坪坝', '04嘉州路', '05红旗河沟', '06两路口', '07观音桥', '08光电园', '09小什字', '10小什字']
+                },
+            ],
+            series: [{
+                name: '条',
+                type: 'bar',
+                yAxisIndex: 0,
+                // barGap: 0,
+                data: [24934, 21319, 13170, 12745, 11726, 9491, 8488, 8190, 7473, 6647, 1234],
+                label: {
+                    normal: {
+                        show: true,  // 控制右侧具体数字的显示
+                        position: 'right',  // 在右侧显示（center中间）
+                        textStyle: {
+                            color: '#ffffff',
+                            fontSize: '16',
+                        }
+                    }
+                },
+                barWidth: 12,
+                itemStyle: {
+                    normal: {
+                        barBorderRadius: [0,15,15,0],  // 设置柱子为圆角
+                        color: function (params) {
+                            var num = myColor.length;
+                            return myColor[params.dataIndex % num]
+                        },
+                    }
+                },
+                z: 2
+            },
+            ]
+        };
+        myChart.setOption(option)
+    </script>
+
+</body>
+
+</html>
