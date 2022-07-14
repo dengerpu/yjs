@@ -122,6 +122,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .login_container {
   .login_img {
     position: absolute;
