@@ -172,3 +172,95 @@ SELECT employee_id,last_name,department_name
 FROM employees e,departments d
 WHERE e.department_id = d.`department_id`
 AND d.`department_name` IN ('Sales','IT');
+
+-- 第7章_单行函数
+# 1.显示系统时间(注：日期+时间)
+SELECT NOW();
+# 2.查询员工号，姓名，工资，以及工资提高百分之20%后的结果（new salary）
+SELECT employee_id, last_name, salary, salary*1.2 'new salary'
+FROM employees;
+# 3.将员工的姓名按首字母排序，并写出姓名的长度（length）
+SELECT last_name, LENGTH(last_name)
+FROM employees
+ORDER BY last_name;
+# 4.查询员工id,last_name,salary，并作为一个列输出，别名为OUT_PUT
+SELECT CONCAT(employee_id,',', last_name,',', salary) OUT_PUT
+FROM employees;
+# 5.查询公司各员工工作的年数、工作的天数，并按工作年数的降序排序
+SELECT DATEDIFF(SYSDATE(), hire_date)/365 work_years, DATEDIFF(SYSDATE(), hire_date) work_days
+FROM employees
+ORDER BY work_years DESC;
+# 6.查询员工姓名，hire_date , department_id，满足以下条件：
+# 雇用时间在1997年之后，department_id
+# 为80 或 90 或110, commission_pct不为空
+SELECT last_name, hire_date, department_id
+FROM employees
+#WHERE hire_date >= '1997-01-01'
+#WHERE hire_date >= STR_TO_DATE('1997-01-01', '%Y-%m-%d')
+WHERE DATE_FORMAT(hire_date,'%Y') >= '1997'
+AND department_id IN (80, 90, 110)
+AND commission_pct IS NOT NULL;
+# 7.查询公司中入职超过10000天的员工姓名、入职时间
+SELECT last_name,hire_date
+FROM employees
+#WHERE TO_DAYS(NOW()) - to_days(hire_date) > 10000;
+WHERE DATEDIFF(NOW(),hire_date) > 10000;
+
+SELECT CONCAT(last_name, ' earns ', TRUNCATE(salary, 0) , ' monthly but wants ',
+TRUNCATE(salary * 3, 0)) "Dream Salary"
+FROM employees;
+
+# 9
+-- job grade
+-- AD_PRES A
+-- ST_MAN B
+-- IT_PROG C
+-- SA_REP D
+-- ST_CLERK E
+-- 产生下面的结果
+-- Last_name Job_id Grade
+-- king AD_PRES A
+SELECT last_name Last_name, job_id Job_id,
+	CASE job_id 
+		WHEN 'AD_PRES' THEN 'A'
+		WHEN 'ST_MAN' THEN 'B'
+		WHEN 'IT_PROG' THEN 'C'
+		WHEN 'SA_REP' THEN 'D'
+		WHEN 'ST_CLERK' THEN 'E'
+		ELSE 'F'
+		END "grade"
+FROM employees;
+
+#1.where子句可否使用组函数进行过滤?
+-- 不可以
+#2.查询公司员工工资的最大值，最小值，平均值，总和
+SELECT MAX(salary),MIN(salary),AVG(salary),SUM(salary)
+FROM employees;
+#3.查询各job_id的员工工资的最大值，最小值，平均值，总和
+SELECT job_id,MAX(salary),MIN(salary),AVG(salary),SUM(salary)
+FROM employees
+GROUP BY job_id;
+#4.选择具有各个job_id的员工人数
+SELECT job_id,COUNT(*)
+FROM employees
+GROUP BY job_id;
+# 5.查询员工最高工资和最低工资的差距（DIFFERENCE）
+SELECT (MAX(salary) - MIN(salary)) difference
+FROM employees;
+# 6.查询各个管理者手下员工的最低工资，其中最低工资不能低于6000，没有管理者的员工不计算在内
+SELECT manager_id, MIN(salary)
+FROM employees
+WHERE manager_id IS NOT NULL
+GROUP BY manager_id
+HAVING MIN(salary) > 6000;
+# 7.查询所有部门的名字，location_id，员工数量和平均工资，并按平均工资降序
+SELECT department_name, location_id, COUNT(employee_id), AVG(salary) avg_sal
+FROM employees e RIGHT JOIN departments d
+ON e.`department_id` = d.`department_id`
+GROUP BY department_name, location_id
+ORDER BY avg_sal DESC;
+# 8.查询每个工种、每个部门的部门名、工种名和最低工资
+SELECT department_name,job_id,MIN(salary)
+FROM departments d LEFT JOIN employees e
+ON e.`department_id` = d.`department_id`
+GROUP BY department_name,job_id;
