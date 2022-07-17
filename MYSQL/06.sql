@@ -180,3 +180,24 @@ SELECT *FROM test_json;
 SELECT * FROM information_schema.table_constraints
 WHERE table_name = 'dept';
 
+
+CREATE VIEW empvu80
+AS
+SELECT employee_id, last_name, salary
+FROM employees
+WHERE department_id = 80;
+
+SELECT * FROM empvu80;
+
+CREATE VIEW empview
+AS
+SELECT employee_id emp_id,last_name NAME,department_name
+FROM employees e,departments d
+WHERE e.department_id = d.department_id;
+
+SELECT * FROM empview;
+
+DESC empview;
+SHOW TABLE STATUS LIKE 'empview'
+
+SHOW CREATE VIEW empview;
