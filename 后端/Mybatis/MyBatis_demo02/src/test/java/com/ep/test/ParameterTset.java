@@ -43,5 +43,21 @@ public class ParameterTset {
         User user = parameterMapper.checkLoginByMap(hashMap);
         System.out.println(user);
     }
+    @Test
+    public void testLoginByUser(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper parameterMapper = sqlSession.getMapper(ParameterMapper.class);
+        User user = parameterMapper.ckeckLoginByUser(new User(0,"admin", "123", 0, null, null));
+        System.out.println(user);
+    }
+
+    @Test
+    public void testLoginByParam(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper parameterMapper = sqlSession.getMapper(ParameterMapper.class);
+        User user = parameterMapper.checkLoginByParam("admin", "123");
+        System.out.println(user);
+    }
+
 
 }

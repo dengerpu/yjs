@@ -8,6 +8,7 @@ public class User {
     private String  sex;
     private String email;
 
+
     public int getId() {
         return id;
     }
@@ -66,5 +67,14 @@ public class User {
                 ", sex=" + sex +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public User(int id, String username, String password, int age, String sex, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.age = age;
+        this.sex = sex;
+        this.email = email;
     }
 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ep.mapper.DynamicSqlMapper">
+
+    <!--int insertMoreEmp(@Param("emps") List<Emp> emps);-->
+    <insert id="insertMoreEmp">
+        insert into t_emp values
+        <foreach collection="emps" separator="," item="emp">
+            (null,#{emp.empName},#{emp.age},#{emp.sex},#{emp.email},null)
+        </foreach>
+    </insert>
+
+
+    <!--int deleteMoreEmp(@Param("eids") Integer[] eids);-->
+    <delete id="deleteMoreEmp">
+<!--        delete from t_emp where eid in-->
+<!--        <foreach collection="eids" separator="," item="eid" open="(" close=")">-->
+<!--            #{eid}-->
+<!--        </foreach>-->
+        delete from t_emp where
+        <foreach collection="eids" item="eid" separator="or">
+            eid = #{eid}
+        </foreach>
+    </delete>
+
+    <!--List<Emp> getEmpByDynamicSql(Emp emp);-->
+    <select id="getEmpByDynamicSql" resultType="emp">
+        select * from t_emp
+        <where>
+            <choose>
+                <when test="empName != null and empName !=''">
+                    emp_name = #{empName}
+                </when>
+                <when test="sex != null and sex != ''">
+                    sex = #{sex}
+                </when>
+                <when test="age != null and age != ''">
+                    age = #{age}
+                </when>
+                <otherwise>
+                    did = 1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!--List<Emp> getEmpByDynamicSql(Emp emp);-->
+    <select id="getEmpByDynamicSqlThree" resultType="emp">
+        select * from t_emp
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="empName != null and empName !=''">
+                emp_name = #{empName} and
+            </if>
+            <if test="sex != null and sex != ''">
+                 sex = #{sex}
+            </if>
+            <if test="age != null and age != ''">
+                age = #{age}
+            </if>
+        </trim>
+    </select>
+
+    <!--List<Emp> getEmpByDynamicSql(Emp emp);-->
+    <select id="getEmpByDynamicSqlTwo" resultType="emp">
+        select * from t_emp
+        <where>
+            <if test="empName != null and empName !=''">
+                 and emp_name = #{empName}
+            </if>
+            <if test="sex != null and sex != ''">
+                or sex = #{sex}
+            </if>
+            <if test="age != null and age != ''">
+                and age = #{age}
+            </if>
+        </where>
+    </select>
+
+    <!--List<Emp> getEmpByDynamicSql(Emp emp);-->
+    <select id="getEmpByDynamicSqlOne" resultType="emp">
+        select * from t_emp where 1 = 1
+        <if test="empName != null and empName !=''">
+             and emp_name = #{empName}
+        </if>
+        <if test="sex != null and sex != ''">
+            and sex = #{sex}
+        </if>
+        <if test="age != null and age != ''">
+            and age = #{age}
+        </if>
+    </select>
+
+
+</mapper>

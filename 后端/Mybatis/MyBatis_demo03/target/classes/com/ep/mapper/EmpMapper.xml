@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ep.mapper.EmpMapper">
+
+    <resultMap id="empResultMap" type="emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="email" column="email"></result>
+        <result property="sex" column="sex"></result>
+    </resultMap>
+
+    <!--List<Emp> findAllEmp();-->
+    <select id="findAllEmp" resultMap="empResultMap">
+        select * from t_emp;
+    </select>
+
+
+    <resultMap id="empResultMapOne" type="emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="email" column="email"></result>
+        <result property="sex" column="sex"></result>
+        <result property="dept.did" column="did"></result>
+        <result property="dept.deptName" column="dept_name"></result>
+    </resultMap>
+
+    <resultMap id="empResultMapTwo" type="emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="email" column="email"></result>
+        <result property="sex" column="sex"></result>
+        <association property="dept" javaType="Dept">
+            <id property="did" column="did"></id>
+            <result property="deptName" column="dept_name"></result>
+        </association>
+    </resultMap>
+
+    <!--Emp findEmpOne(@Param("id") int id);-->
+    <select id="findEmpOne" resultMap="empResultMapTwo">
+        select * from t_emp left join t_dept on t_emp.did = t_dept.did where t_emp.eid = #{id}
+    </select>
+
+
+    <resultMap id="empResultMapStepOne" type="emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="email" column="email"></result>
+        <result property="sex" column="sex"></result>
+        <association fetchType="lazy" property="dept"  select="com.ep.mapper.DeptMapper.findDeptOne" column="did">
+
+        </association>
+    </resultMap>
+    <!--Emp findEmpOneByStepOne(@Param("id") int id);-->
+    <select id="findEmpOneByStepOne" resultMap="empResultMapStepOne">
+        select * from t_emp where t_emp.eid = #{id}
+    </select>
+
+
+    <!--List<Emp>  findDeptByStepTwo(@Param("did") int did);
+        这里可以直接引入emp，是因为在mybatis-config.xml配置了 <setting name="mapUnderscoreToCamelCase" value="true"/>
+        自动转换为驼峰
+    -->
+    <select id="findDeptByStepTwo" resultType="emp">
+        select * from t_emp where did = #{did};
+    </select>
+
+
+    <!--List<Emp> findAllEmp();-->
+    <select id="findAllEmpOld" resultType="emp">
+        <!--select eid,emp_name empName,age,email,sex from t_emp;-->
+        <!--select * from t_emp-->
+    </select>
+</mapper>

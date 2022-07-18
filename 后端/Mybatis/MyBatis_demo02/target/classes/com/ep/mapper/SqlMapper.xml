@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ep.mapper.SqlMapper">
+
+    <!--List<User> testMohu(@Param("query") String query);-->
+    <select id="testMohu" resultType="user">
+        <!--select * from user where username like '%#{query}%'错误写法
+        执行的SQL语句：select * from user where username like '%?%'-->
+
+        <!--select * from user where username like '%${query}%'-->
+        <!--select * from user where username like concat('%',#{query},'%')-->
+        select * from user where username like "%"#{query}"%"
+    </select>
+
+    <!--int deleteMore(@Param("ids") String ids);-->
+    <delete id="deleteMore">
+        <!--delete from user where id in (#{ids})  不可以这样删除，因为内部是''拼接-->
+        delete from user where id in (${ids})
+    </delete>
+
+    <!--List<User> getAllUser(@Param("tableName") String tableName);-->
+    <select id="getAllUser" resultType="user">
+        select * from ${tableName}
+    </select>
+
+    <!--int insertUser(User user);-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user values(null,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
+</mapper>
