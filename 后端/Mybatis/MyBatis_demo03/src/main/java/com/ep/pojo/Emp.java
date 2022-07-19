@@ -1,6 +1,8 @@
 package com.ep.pojo;
 
-public class Emp {
+import java.io.Serializable;
+
+public class Emp implements Serializable {
     private int eid;
     private String empName;
     private String age;

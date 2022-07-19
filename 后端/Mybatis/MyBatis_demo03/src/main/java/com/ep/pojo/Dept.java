@@ -1,8 +1,9 @@
 package com.ep.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Dept {
+public class Dept implements Serializable {
     private int did;
     private String deptName;
     private List<Emp> emps;
