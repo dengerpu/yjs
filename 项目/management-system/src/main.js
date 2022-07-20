@@ -22,7 +22,7 @@ Vue.use(VueTinymce)              // 安装vue的tinymce组件
 
 
 import axios from 'axios'
-axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/"
+axios.defaults.baseURL = "http://127.0.0.1:8888/"
 // 在request请求拦截器中，展示进度条 NProgress.start()
 axios.interceptors.request.use(config => {
   NProgress.start()

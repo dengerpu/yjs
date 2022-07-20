@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ep.mybatis_plus.mapper.UserMapper">
+
+    <!--User selectUserById(@Param("id")Integer id);-->
+    <select id="selectUserById" resultType="user">
+        select * from user where id = #{id}
+    </select>
+
+    <!--Page<User> selectUserByAgeVo(Page<User> page,Integer age);-->
+    <select id="selectUserByAgeVo" resultType="user">
+        select uid,user_name,age,email from t_user where age > #{age}
+    </select>
+</mapper>

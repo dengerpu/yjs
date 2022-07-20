@@ -333,10 +333,6 @@ module.exports = function (app) {
 
 # Mock.mock()
 
-mozhi.gyy edited this page on 16 Dec 2015 · [4 revisions](https://github.com/nuysoft/Mock/wiki/Mock.mock()/_history)
-
-
-
 ## Mock.mock( rurl?, rtype?, template|function( options ) )
 
 根据数据模板生成模拟数据。
@@ -345,31 +341,21 @@ mozhi.gyy edited this page on 16 Dec 2015 · [4 revisions](https://github.com/nu
 
 根据数据模板生成模拟数据。
 
-[JSFiddle](http://jsfiddle.net/nuysoft/Y3rg6/7/)
-
 ### Mock.mock( rurl, template )
 
 记录数据模板。当拦截到匹配 `rurl` 的 Ajax 请求时，将根据数据模板 `template` 生成模拟数据，并作为响应数据返回。
-
-[JSFiddle](http://jsfiddle.net/nuysoft/BeENf/6/)
 
 ### Mock.mock( rurl, function( options ) )
 
 记录用于生成响应数据的函数。当拦截到匹配 `rurl` 的 Ajax 请求时，函数 `function(options)` 将被执行，并把执行结果作为响应数据返回。
 
-[JSFiddle](http://jsfiddle.net/nuysoft/2s5t5/15/)
-
 ### Mock.mock( rurl, rtype, template )
 
 记录数据模板。当拦截到匹配 `rurl` 和 `rtype` 的 Ajax 请求时，将根据数据模板 `template` 生成模拟数据，并作为响应数据返回。
 
-[JSFiddle](http://jsfiddle.net/nuysoft/Eq68p/3/)
-
 ### Mock.mock( rurl, rtype, function( options ) )
 
 记录用于生成响应数据的函数。当拦截到匹配 `rurl` 和 `rtype` 的 Ajax 请求时，函数 `function(options)` 将被执行，并把执行结果作为响应数据返回。
-
-[JSFiddle](http://jsfiddle.net/nuysoft/6dpV5/5/)
 
 ### rurl
 
