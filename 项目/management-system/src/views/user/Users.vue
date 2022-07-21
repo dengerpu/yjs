@@ -35,11 +35,11 @@
         <el-table-column prop="username" label="用户名"></el-table-column>
         <el-table-column prop="mobile" label="手机"></el-table-column>
         <el-table-column prop="email" label="邮箱"></el-table-column>
-        <el-table-column prop="role_name" label="权限"></el-table-column>
+        <el-table-column prop="roleName" label="权限"></el-table-column>
         <el-table-column label="状态">
           <template slot-scope="scope">
             <el-switch
-              v-model="scope.row.mg_state"
+              v-model="scope.row.state"
               @change="userStateChange(scope.row)"
             ></el-switch>
           </template>
@@ -152,7 +152,7 @@
         @close="closeSetRole()"
       >
         <p>当前用户：{{ userinfo.username }}</p>
-        <p>当前角色：{{ userinfo.role_name }}</p>
+        <p>当前角色：{{ userinfo.roleName }}</p>
         <p>
           分配新角色：<el-select v-model="selectRoleId" placeholder="请选择">
             <el-option
@@ -267,8 +267,9 @@ export default {
       const { data: res } = await this.$http.get('users', {
         params: this.queryInfo,
       })
-      if (res.meta.status == 200) {
-        this.userList = res.data.users
+      console.log(res);
+      if (res.status == 200) {
+        this.userList = res.data.records;
         this.total = res.data.total
       } else {
         this.$message.error(res.meta.msg)
@@ -309,20 +310,20 @@ export default {
       this.$refs.addUserFormRef.validate(async (valid) => {
         if (!valid) return
         const { data: res } = await this.$http.post('/users', this.addUserForm)
-        if (res.meta.status == 201) {
-          this.$message.success(res.meta.msg)
+        if (res.status == 201) {
+          this.$message.success(res.message)
           this.getUserList()
           this.addDialogVisible = false
         } else {
-          this.$message.error(res.meta.msg)
+          this.$message.error(res.message)
         }
       })
     },
     // 修改用户，先查询用户信息
     async editUser(id) {
-      const { data: res } = await this.$http.get(`users/${id}`)
-      if (res.meta.status != 200) return this.$message.error(res.meta.msg)
-      // console.log(res.data)
+      const { data: res } = await this.$http.get(`/users/${id}`)
+      if (res.status != 201) return this.$message.error(res.message)
+      //console.log(res.data)
       this.editUserForm = res.data
       this.editDialogVisible = true
     },
@@ -334,12 +335,12 @@ export default {
           `users/${this.editUserForm.id}`,
           this.editUserForm
         )
-        if (res.meta.status == 200) {
-          this.$message.success(res.meta.msg)
+        if (res.status == 201) {
+          this.$message.success(res.message)
           this.getUserList()
           this.editDialogVisible = false
         } else {
-          this.$message.error(res.meta.msg)
+          this.$message.error(res.message)
         }
       })
     },
@@ -353,11 +354,11 @@ export default {
       })
         .then(async () => {
           const { data: res } = await this.$http.delete('users/' + id)
-          if (res.meta.status == 200) {
-            this.$message.success(res.meta.msg)
+          if (res.status == 204) {
+            this.$message.success(res.message)
             this.getUserList()
           } else {
-            this.$message.error(res.meta.msg)
+            this.$message.error(res.message)
           }
         })
         .catch(() => {
@@ -372,11 +373,11 @@ export default {
       this.userinfo = userinfo
       // 在对话框展示之前，获取所有的角色列表
       const { data: res } = await this.$http.get('roles')
-      if (res.meta.status == 200) {
+      if (res.status == 200) {
         // this.$message.success(res.meta.msg)
         this.roleslist = res.data
       } else {
-        this.$message.error(res.meta.msg)
+        this.$message.error(res.message)
       }
       this.setRoledialogVisible = true
     },

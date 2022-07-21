@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ep.mapper.MenuMapper">
+
+    <resultMap id="menuResultMap" type="com.ep.pojo.Menus">
+        <id property="id" column="id"></id>
+        <result property="authName" column="authName"></result>
+        <result property="path" column="path"></result>
+        <result property="order" column="order"></result>
+        <collection property="children" select="com.ep.mapper.MenuMapper.findSecondMenu" column="id">
+
+        </collection>
+    </resultMap>
+
+    <select id="findAllMenu" resultMap="menuResultMap">
+       select * from menus where menus.pid = 0 order by menus.order
+    </select>
+
+    <!--List<Menus> findSecondMenu(@Param("pid") Integer pid);-->
+    <select id="findSecondMenu" resultType="com.ep.pojo.Menus">
+        select * from menus where pid = #{pid}
+    </select>
+
+</mapper>

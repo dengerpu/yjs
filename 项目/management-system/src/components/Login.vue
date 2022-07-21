@@ -96,7 +96,13 @@ export default {
           return this.$message.error('输入的信息不合法')
         } else {
           const { data: res } = await this.$http.post('/login', this.loginForm)
-          console.log(res);
+          if (res.status == 200){
+            this.$message.success(res.message)
+            window.sessionStorage.setItem('token', res.data.token)
+            this.$router.push('/home')
+          }else {
+            this.$message.error(res.message)
+          }
           // if (res.meta.status == 200) {
           //   this.$message.success(res.meta.msg)
           //   window.sessionStorage.setItem('token', res.data.token)

@@ -1,4 +1,4 @@
-package com.ep.domain;
+package com.ep.vo;
 
 import lombok.Data;
 
@@ -7,7 +7,10 @@ import lombok.Data;
  */
 @Data
 public class ResultInfo {
+
     private int status;           //状态码
+
     private String message;      //错误信息
+
     private Object data;         //后端返回结果数据对象
 }

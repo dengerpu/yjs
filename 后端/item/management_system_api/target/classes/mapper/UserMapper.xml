@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ep.mapper.UserMapper">
+    <!-- List<User> findAllUserByPage(Pagination page, @Param("query") String query);-->
+    <select id="findAllUserByPage" resultType="com.ep.pojo.User">
+        select id,username,mobile,email,create_time,role_name,state from user left join role on user.role_id = role.role_id
+        <where>
+            <if test=" query!=null and query!=''">
+                and username like "%"#{query}"%"
+            </if>
+        </where>
+    </select>
+</mapper>
