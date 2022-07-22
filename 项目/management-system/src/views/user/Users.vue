@@ -3,8 +3,8 @@
     <el-card>
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-        <el-breadcrumb-item>权限列表</el-breadcrumb-item>
+        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+        <el-breadcrumb-item>用户列表</el-breadcrumb-item>
       </el-breadcrumb>
       <!-- 搜索与添加区域 -->
       <el-row :gutter="20">
@@ -120,7 +120,7 @@
       </el-dialog>
 
       <!-- 修改用户的对话框 -->
-      <el-dialog title="修改用户" :visible.sync="editDialogVisible" width="50%">
+      <el-dialog title="修改用户" destroy-on-close :visible.sync="editDialogVisible" width="50%">
         <el-form
           :model="editUserForm"
           :rules="addUserRules"
@@ -134,12 +134,12 @@
           <el-form-item label="邮箱" prop="email">
             <el-input v-model="editUserForm.email"></el-input>
           </el-form-item>
-          <el-form-item label="手机号" prop="mobile">
+          <el-form-item label="手机号" prop="mobile" >
             <el-input v-model="editUserForm.mobile"></el-input>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="editDialogVisible = false">取 消</el-button>
+          <el-button @click="closeEditUserDialog">取 消</el-button>
           <el-button type="primary" @click="editUserCommit">确 定</el-button>
         </span>
       </el-dialog>
@@ -157,9 +157,9 @@
           分配新角色：<el-select v-model="selectRoleId" placeholder="请选择">
             <el-option
               v-for="item in roleslist"
-              :key="item.id"
+              :key="item.roleId"
               :label="item.roleName"
-              :value="item.id"
+              :value="item.roleId"
             >
             </el-option>
           </el-select>
@@ -190,9 +190,9 @@ export default {
         return callback(new Error('请输入合法的邮箱'))
       }
     }
-    // 验证邮箱的规则
+    // 验证手机的规则
     var checkPhone = (rule, value, callback) => {
-      // 验证邮箱的正则表达式
+      // 验证手机的正则表达式
       const regPhone =
         /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
       if (regPhone.test(value)) {
@@ -267,7 +267,7 @@ export default {
       const { data: res } = await this.$http.get('users', {
         params: this.queryInfo,
       })
-      console.log(res);
+      //console.log(res);
       if (res.status == 200) {
         this.userList = res.data.records;
         this.total = res.data.total
@@ -288,12 +288,12 @@ export default {
     // 用户状态发生改变
     async userStateChange(userinfo) {
       const { data: res } = await this.$http.put(
-        `users/${userinfo.id}/state/${userinfo.mg_state}`
+        `users/${userinfo.id}/state/${userinfo.state}`
       )
-      if (res.meta.status == 200) {
+      if (res.status == 201) {
         this.$message.success('更新用户状态成功')
       } else {
-        userinfo.mg_state = !userinfo.mg_state
+        userinfo.state = !userinfo.state
         this.$message.error('更新用户状态失败')
       }
     },
@@ -326,6 +326,10 @@ export default {
       //console.log(res.data)
       this.editUserForm = res.data
       this.editDialogVisible = true
+    },
+    closeEditUserDialog() {
+      this.$refs.editUserFormRef.resetFields()
+      this.editDialogVisible = false
     },
     // 修改用户，提交用户信息
     editUserCommit() {
@@ -372,13 +376,14 @@ export default {
     async setRole(userinfo) {
       this.userinfo = userinfo
       // 在对话框展示之前，获取所有的角色列表
-      const { data: res } = await this.$http.get('roles')
+      const { data: res } = await this.$http.get('/roles')
       if (res.status == 200) {
         // this.$message.success(res.meta.msg)
         this.roleslist = res.data
       } else {
         this.$message.error(res.message)
       }
+      console.log(res)
       this.setRoledialogVisible = true
     },
     // 点击确定，分配角色
@@ -389,12 +394,12 @@ export default {
           rid: this.selectRoleId,
         }
       )
-      if (res.meta.status == 200) {
-        this.$message.success(res.meta.msg)
+      if (res.status == 201) {
+        this.$message.success(res.message)
         this.getUserList()
         this.setRoledialogVisible = false
       } else {
-        this.$message.error(res.meta.msg)
+        this.$message.error(res.message)
       }
     },
     // 分配角色对话框，关闭事件

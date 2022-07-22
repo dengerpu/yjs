@@ -11,9 +11,6 @@ public class TestController {
     @RequestMapping("/test")
     @ResponseBody
     public ResultInfo test() {
-        ResultInfo info = new ResultInfo();
-        info.setStatus(200);
-        info.setMessage("请求成功");
-        return info;
+        return ResultInfo.success(null);
     }
 }

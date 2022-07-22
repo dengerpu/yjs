@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ep.mapper.PermissionMapper">
+    <!--List<Permission> findAllRights();-->
+    <select id="findAllRights" resultType="com.ep.pojo.Permission">
+        SELECT DISTINCT ps_id, ps_name, ps_level, path FROM permission LEFT JOIN menus ON permission.ps_id = menus.id OR permission.ps_pid = menus.id
+    </select>
+
+<!--    <resultMap id="permisssionResultMap" type="com.ep.pojo.Permission">-->
+<!--        <id property="psId" column="ps_id"></id>-->
+<!--        <result property="psName" column="ps_name"></result>-->
+<!--        <result property="psLevel" column="ps_level"></result>-->
+<!--        <collection property="children" select="com.ep.mapper.PermissionMapper.findAllRightsTwo" column="ps_id">-->
+<!--            <id property="psId" column="ps_id"></id>-->
+<!--            <result property="psName" column="ps_name"></result>-->
+<!--            <result property="psLevel" column="ps_level"></result>-->
+<!--            <collection property="children" select="com.ep.mapper.PermissionMapper.findAllRightsThree" column="ps_id">-->
+
+<!--            </collection>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+
+<!--    &lt;!&ndash;List<Permission> findAllRightsOne();&ndash;&gt;-->
+<!--    <select id="findAllRightsOne" resultMap="permisssionResultMap">-->
+<!--        select distinct ps_id,ps_name,ps_pid  from permission where ps_level = 0-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;List<Permission> findAllRightsTwo(Integer pid);&ndash;&gt;-->
+<!--    <select id="findAllRightsTwo" resultType="com.ep.pojo.Permission">-->
+<!--        select distinct ps_id,ps_name,ps_pid from permission where ps_level = 1 and ps_id = #{pid}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;List<Permission> findAllRightsThree(Integer pid);&ndash;&gt;-->
+<!--    <select id="findAllRightsThree" resultType="com.ep.pojo.Permission">-->
+<!--        select distinct ps_id,ps_name,ps_pid from permission where ps_level = 2 and ps_id = #{pid}-->
+<!--    </select>-->
+</mapper>

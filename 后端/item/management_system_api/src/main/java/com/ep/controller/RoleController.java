@@ -19,15 +19,10 @@ public class RoleController {
     @GetMapping("/roles")
     public ResultInfo findAllRoles(){
         List<Role> allRoles = roleService.findAllRoles();
-        ResultInfo info = new ResultInfo();
-        if (allRoles == null){
-            info.setStatus(400);
-            info.setMessage("请求失败");
+        if (allRoles !=null ) {
+            return ResultInfo.success(allRoles);
         }else {
-            info.setStatus(200);
-            info.setMessage("请求成功");
-            info.setData(allRoles);
+            return ResultInfo.fail(422,"查询失败");
         }
-        return info;
     }
 }

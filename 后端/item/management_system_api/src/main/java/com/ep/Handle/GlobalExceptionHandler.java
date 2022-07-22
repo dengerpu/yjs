@@ -16,9 +16,6 @@ public class GlobalExceptionHandler {
         //打印异常信息
         log.error("出现了异常！ {}",e);
         //从异常对象中获取提示信息封装返回
-        ResultInfo info = new ResultInfo();
-        info.setStatus(400);
-        info.setMessage(e.getMessage());
-        return info;
+        return ResultInfo.fail(400,"服务器端发生错误");
     }
 }

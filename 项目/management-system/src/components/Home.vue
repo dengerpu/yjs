@@ -104,7 +104,9 @@
             {{ item.name }}
           </el-tag>
         </div>
-        <router-view></router-view>
+        <keep-alive>
+             <router-view></router-view>
+        </keep-alive>
       </el-main>
     </el-container>
   </el-container>
@@ -128,6 +130,15 @@ export default {
           name: '用户列表',
         },
       ]
+    }
+  },
+  watch:{
+    $route(to, from){
+      //this.activePath = window.sessionStorage.setItem('activePath', to.path)
+      this.activePath = to.path;
+      if(to.path == '/home' || to.path == '/welcome'){
+        this.activePath = '/home'
+      }
     }
   },
   data() {
@@ -223,9 +234,13 @@ export default {
     routeTagclick(path) {
       window.sessionStorage.setItem('activePath', path)
       this.activePath = path
+       // 由于welcome是重定向过来的，所以增加判断
+      if (this.$route.path == '/welcome' && path == '/home') {
+        return;
+      }
       if (this.$route.path != path) {
         this.$router.push(path)
-      }
+      } 
     },
   },
 }
@@ -298,6 +313,7 @@ export default {
         color: #495060;
         font-size: 12px;
         font-weight: 500;
+        user-select: none;
         cursor: pointer;
       }
       .route_tag_active {

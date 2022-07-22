@@ -20,15 +20,10 @@ public class MenuController {
     @RequestMapping("/menus")
     public ResultInfo findMenu(){
         List<Menus> allMenus = menuService.findAllMenus();
-        ResultInfo info = new ResultInfo();
         if (allMenus == null) {
-            info.setStatus(422);
-            info.setMessage("菜单列表为空");
+            return ResultInfo.fail(422,"菜单列表为空");
         }else {
-            info.setStatus(200);
-            info.setMessage("获取成功");
-            info.setData(allMenus);
+            return ResultInfo.success(allMenus);
         }
-        return info;
     }
 }

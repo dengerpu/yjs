@@ -114,10 +114,10 @@ export default {
     // 获取角色列表
     async getRolesList() {
       const { data: res } = await this.$http.get('roles')
-      if (res.meta.status == 200) {
+      if (res.status == 200) {
         this.rolesList = res.data
       } else {
-        this.$message.error(res.meta.msg)
+        this.$message.error(res.message)
       }
     },
     // 删除角色对应的权限
@@ -137,21 +137,21 @@ export default {
       const { data: res } = await this.$http.delete(
         `roles/${role.id}/rights/${rightId}`
       )
-      if (res.meta.status == 200) {
-        this.$message.success(res.meta.msg)
+      if (res.status == 200) {
+        this.$message.success(res.message)
         role.children = res.data
       } else {
-        this.$message.error(res.meta.msg)
+        this.$message.error(res.message)
       }
     },
     async setRole(role) {
       this.defKeys = []
       const { data: res } = await this.$http.get('rights/tree')
-      if (res.meta.status == 200) {
-        this.$message.success(res.meta.msg)
+      if (res.status == 200) {
+        this.$message.success(res.message)
         this.rightslist = res.data
       } else {
-        this.$message.error(res.meta.msg)
+        this.$message.error(res.message)
       }
       // 获取所有的三级结点
       this.getLeafKeys(role, this.defKeys)

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface RoleService extends IService<Role> {
 
     /***
@@ -14,4 +14,10 @@ public interface RoleService extends IService<Role> {
      * @return
      */
     List<Role> findAllRoles();
+
+    /***
+     * 查询所有的角色以及权限
+     * @return
+     */
+    List<Role> findAllRolesAndPermission();
 }

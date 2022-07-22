@@ -8,13 +8,10 @@ import com.ep.jwt.JwtUtil;
 import com.ep.pojo.User;
 import com.ep.mapper.UserMapper;
 import com.ep.service.UserService;
-import com.ep.vo.PageBean;
 import com.ep.vo.UserInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
@@ -72,6 +69,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public Boolean updateUserRoleId(Integer id, Integer rid) {
         UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
         updateWrapper.set("role_id",rid).eq("id",id);
+        return update(updateWrapper);
+    }
+
+    @Override
+    public Boolean updateUserState(Integer id, Boolean state) {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.set("state",state).eq("id",id);
+
         return update(updateWrapper);
     }
 }

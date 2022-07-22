@@ -3,13 +3,11 @@ package com.ep.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ep.pojo.User;
-import com.ep.vo.PageBean;
 import com.ep.vo.UserInfo;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
 
-@Service
+
+
 public interface UserService extends IService<User> {
 
     /**
@@ -64,4 +62,12 @@ public interface UserService extends IService<User> {
      * @return
      */
     Boolean updateUserRoleId(Integer id, Integer rid);
+
+    /***
+     * 修改用户状态
+     * @param id
+     * @param state
+     * @return
+     */
+    Boolean updateUserState(Integer id, Boolean state);
 }
